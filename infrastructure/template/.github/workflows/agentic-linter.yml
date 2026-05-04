@@ -1,0 +1,45 @@
+name: Agentic Linter
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 1. Security Scan (Detect Hallucinated Secrets)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 2. Test Coverage Audit
+        run: |
+          echo "Running tests..."
+          # Enforcing the coverage gate
+          pytest --cov=src --cov-fail-under=80
+
+      - name: 3. Prompt Quality Check
+        run: |
+          echo "Verifying Prompt Logs exist and follow the mandatory template..."
+          if ! ls docs/prompt-logs/*.md 1> /dev/null 2>&1; then
+            echo "Error: You must submit a Prompt Log showing how you steered the AI for this feature."
+            exit 1
+          fi
+          
+          for log in docs/prompt-logs/*.md; do
+            if [[ "$log" == *"TEMPLATE.md"* ]]; then
+              continue
+            fi
+            # Verify mandatory headers
+            for header in "## 1. The Goal" "## 2. Initial Context Provided" "## 3. The AI Hallucination / Error" "## 4. The Correction Strategy" "## 5. Final Outcome"; do
+              if ! grep -q "$header" "$log"; then
+                echo "Error: Prompt log $log is missing mandatory header: $header"
+                exit 1
+              fi
+            done
+          done
+          echo "Prompt logs verified. Ready for mentor review of Iterative Correction."
