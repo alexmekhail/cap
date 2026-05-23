@@ -1,0 +1,6 @@
+# This file defines who owns specific parts of the repository.
+# As the owner, you will be automatically requested for review
+# on all Pull Requests, and your approval will be required if 
+# Branch Protection Rules are enabled.
+
+* @mageeb
