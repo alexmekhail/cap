@@ -14,3 +14,9 @@ A prepared walkthrough is sufficient; a live change is optional, not required. K
 
 ## Instructor Preparation
 Collect guest slides/demo links for the GitHub materials with their permission. Check presentation access and timing. Prepare questions about iteration and verification, not only impressive outputs. Finish by explaining the at-home setup and field report; the first classroom build happens in Week 2.
+
+## Timing and Moderation
+Use the [talk outline](talk-outline.md) for the two-hour session: 10m framing, three 25m showcases, 25m shared Q&A, and 10m synthesis/homework. Within each showcase, aim for 8m problem/product, 7m build process, 7m workflow evolution, and 3m takeaway. Protect discussion time with a visible time cue.
+
+## After the Session
+Add authorized guest materials to this week’s GitHub folder, record unanswered questions, and review the homework field reports before preparing Week 2 examples. Never publish guest material that has not been cleared for sharing.
