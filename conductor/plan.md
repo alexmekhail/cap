@@ -9,7 +9,7 @@ Students explore in Week 1, build a fresh project in Week 2, modify an existing 
 **The Application Architecture:**
 *   **Data/Event Ingestion:** Handling user inputs, webhooks, or external API streams.
 *   **Business Logic Layer:** A Python backend for complex rules, transactions, and transformations.
-*   **Persistence:** Cloud-native databases (PostgreSQL/Firestore).
+*   **Persistence:** PostgreSQL for the shared production path; alternative persistence requires an explicit equivalent learning plan.
 *   **Interface:** A dashboard or consumer UI interacting with the backend.
 *   **Infrastructure:** Full Dockerization and CI/CD.
 
@@ -26,11 +26,11 @@ Students must select one of the following domains to apply this pattern to:
 ## 3. The Standardized Agentic Workspace (SAW)
 A unified environment enforcing rigorous SDLC practices.
 *   **Repo Structure:** `/src`, `/tests`, `/infrastructure`, `/docs/prompt-logs`.
-*   **The Automated Linter:** An AI agent (GitHub Action) that automatically reviews PRs for Test Coverage, Security Vulnerabilities, and Prompt Quality (ensuring logs show iterative improvement).
+*   **Automated checks:** The reference workflow runs tests, lint, static security/dependency checks, frontend build, and log-structure validation. It does not run an AI grader. See the starter README for setup.
 
 ## 4. AI-Augmented Mentorship
 Mentorship is strictly high-leverage (architecture, cloud, prompting strategies).
-*   **The "2-Hour Hatch":** A structured escalation path: 45m prompt strategy shift -> 90m reading logs manually -> 120m mentor intervention. All attempts must be documented.
+*   **The "2-Hour Hatch":** Change approach around 45m, inspect evidence by 90m, and seek targeted help by 120m. Access, data-loss, security, and spending blockers should be raised immediately. Document the diagnosis and attempted checks.
 *   **Standardized Rubrics:** Mentors grade on:
     1.  **Context Management:** Did the student provide the right data to the AI?
     2.  **Iterative Correction:** Did their checks expose meaningful failures, and were their interventions justified?
@@ -65,7 +65,7 @@ Mentorship is strictly high-leverage (architecture, cloud, prompting strategies)
 
 **Assessment alignment:** Week 1 uses the field-report rubric; Weeks 2–4 use their published assignment weights, with the shared engineering rubric supplying evidence anchors. Weeks 5–12 use the shared rubric. Credit verified outcomes, architecture decisions, and justified intervention; do not reward app size or penalize iteration count by itself.
 
-## Weeks 1–4: Materials and Delivery
+## Weekly Materials and Delivery
 
 The weekly folders are the source of classroom and assignment materials. Each week has a talk outline, presenter notes, a demo or speaker guide, slide source, student reference, and a separate authoritative homework document. Presenter notes and reference solutions are visible to students; use them openly and disclose reuse in submissions.
 
@@ -75,10 +75,18 @@ The weekly folders are the source of classroom and assignment materials. Each we
 | 2 | [Guided practice materials](../curriculum/weeks/02/README.md) | [A fresh application](../curriculum/weeks/02/homework.md) |
 | 3 | [Terminal and sustained-agent materials](../curriculum/weeks/03/README.md) | [Excalidraw feature choice](../curriculum/weeks/03/homework.md) |
 | 4 | [Orchestration materials](../curriculum/weeks/04/README.md) | [An open-ended hard build](../curriculum/weeks/04/homework.md) |
+| 5 | [Week 5 materials](../curriculum/weeks/05/README.md) | [Assignment and assessment](../curriculum/weeks/05/homework.md) |
+| 6 | [Week 6 materials](../curriculum/weeks/06/README.md) | [Assignment and assessment](../curriculum/weeks/06/homework.md) |
+| 7 | [Week 7 materials](../curriculum/weeks/07/README.md) | [Assignment and assessment](../curriculum/weeks/07/homework.md) |
+| 8 | [Week 8 materials](../curriculum/weeks/08/README.md) | [Assignment and assessment](../curriculum/weeks/08/homework.md) |
+| 9 | [Week 9 materials](../curriculum/weeks/09/README.md) | [Assignment and assessment](../curriculum/weeks/09/homework.md) |
+| 10 | [Week 10 materials](../curriculum/weeks/10/README.md) | [Assignment and assessment](../curriculum/weeks/10/homework.md) |
+| 11 | [Week 11 materials](../curriculum/weeks/11/README.md) | [Assignment and assessment](../curriculum/weeks/11/homework.md) |
+| 12 | [Week 12 materials](../curriculum/weeks/12/README.md) | [Assignment and assessment](../curriculum/weeks/12/homework.md) |
 
 Week 2 introduces project instructions and skills with a small example; Week 3 develops them into tools for maintaining context across sustained work. Week 4 extends supervision to multiple agents. Gas Town is a possible instructor demonstration, not a required student purchase or a finalized course dependency. The instructor brings one working orchestrator setup and contrasts it with three harness designs.
 
-The Week 4 problem need not become the production capstone. At Week 5, students may begin anew or continue if their project fits the production learning objectives. Do not assume a Week 4 Python backend, SQL schema, or migration history.
+The Week 4 problem need not become the production capstone. At Week 5, students may begin anew or continue if their project fits the production learning objectives. Do not assume a Week 4 Python backend, SQL schema, or migration history. Week 5 establishes a narrow slice and initial migration; Week 7 teaches follow-up migration and PostgreSQL transition.
 
 **Entry and workload:** Students already run projects, use Git branches, read Python/JavaScript, debug basic errors, and know SQL fundamentals. They bring GitHub accounts and their own paid agents supporting VS Code and terminal from day one. All materials are shared in full on GitHub. Plan 5–10 hours of homework per week. Week 1 has a guest-session format; Weeks 2–4 retain the existing three-hour classroom planning envelope, with a 30-minute hands-on exercise in Week 3.
 
@@ -93,3 +101,20 @@ For each week, check that students have been taught the prerequisites for the as
 Distinguish written demo plans from runnable, rehearsed demonstrations. Validate what can be checked locally and state remaining tool/account-dependent preparation precisely. All material is shared through GitHub; reference reuse must be disclosed rather than prevented through hidden materials.
 
 Commit and push completed, verified revisions on the existing feature branch. Do not merge without the instructor's explicit authorization. Do not create separate planning documents that duplicate this structure. Ownership does not imply background work or scheduled runs; continue the curriculum work in active sessions and report outcomes and material limitations.
+
+## Full-Course Review and Delivery Status
+
+The complete 12-week sequence now has a weekly index, actionable outline, presenter notes, slide source, student reference, standalone homework, and instructor demo guide. Weeks 1–4 retain the agreed inspiration → guided VS Code → sustained terminal agent → orchestration progression. Week 5 starts or adapts one production slice; Week 6 defines quality and access; Week 7 covers PostgreSQL, follow-up migrations, and containers; Weeks 8–12 cover release, incident response, workflow improvement, interviews, and portfolio defense.
+
+The supplied production reference includes a working React/TypeScript and FastAPI/SQLAlchemy inventory slice, initial Alembic migration, seed command, tests, Docker/Compose configuration, dependency locks, and a copyable CI workflow. It uses synthetic data and intentionally leaves production authentication/authorization to the Week 6 access decision. The workflow performs deterministic checks and log-structure validation; LLM-assisted assessment remains a separate, optional mentor procedure.
+
+Local verification covers all weekly material links and rubric totals, the single-agent failure/recovery fixture, harness handoff checks, the authorization exercise, backend tests/coverage/lint/static security, dependency audits, frontend build, and browser create/reload/error behavior. Hosted CI additionally builds and exercises the PostgreSQL container reference. Check its result for the reviewed commit before treating that path as verified.
+
+### Cohort Preparation Still Required
+- Confirm three Week 1 speakers and permission to publish their materials.
+- Verify the cohort's chosen agent access in VS Code and terminal, and rehearse the provider-specific Week 4 adapter/orchestrator. The included harness replay is explicitly not live AI execution.
+- Pin and rehearse an Excalidraw checkout before Week 3; record its commands and baseline results rather than assuming upstream setup remains unchanged.
+- Rehearse the selected cloud account/project, runtime identity, managed database, and budget configuration before Week 8. No cloud deployment is performed by editing this curriculum.
+- Publish the Week 12 presentation order and use parallel review groups when cohort size exceeds the single-room capacity.
+
+These are delivery prerequisites involving guests, cohort tools, or live infrastructure. They are distinguished from the repository review and locally executable reference checks rather than represented as already completed.

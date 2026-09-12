@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: cap
+      POSTGRES_PASSWORD: local-demo-only
+      POSTGRES_DB: cap
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cap -d cap"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - cap_data:/var/lib/postgresql/data
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://cap:local-demo-only@db:5432/cap
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  cap_data:

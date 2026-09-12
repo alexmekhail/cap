@@ -1,22 +1,49 @@
-# Week 10: Evidence-Based Workflow Audit
+# Week 10: Workflow Audit and Measured Improvement
 
-## Goal
-Students evaluate how their own engineering workflow changed from the Week 1 first attempt to the deployed capstone. Guest inspiration belongs to Week 1; this session uses students' own evidence to improve their practice.
+## Teaching Purpose
+Improve a personal AI engineering workflow using evidence instead of adopting a tool or rule because it sounds sophisticated.
 
-## Workflow Reveal (45m)
-The instructor compares an early prompt log with a later agent session: what context was verified, which checks caught failures, where intervention mattered, and what escaped detection. Show one case where manual investigation was the appropriate choice.
+## Entry Check
+Bring logs, PRs, and check results from Weeks 1–9, including the incident exercise. Include a case where autonomous work helped and one where manual investigation was justified.
 
-## Core Instruction (75m)
-- **Evidence review (25m):** Review logs and PRs from Weeks 1–9. Distinguish model mistakes, incomplete requirements, environment problems, and weak acceptance tests.
-- **Controlled improvement (25m):** Choose one recurring issue and change one part of the workflow. Compare before/after on the same bounded task, recording elapsed time, review effort, checks, and remaining defects. Treat a single trial as evidence for that task, not a universal tool ranking.
-- **Personal operating procedure (25m):** Write actionable rules for context gathering, acceptance checks, budgets, escalation, and review. Explain when to supervise an agent and when to investigate directly.
+## Exit Evidence
+Three evidence-backed case studies, one bounded improvement experiment, and a personal operating procedure usable in interviews and future projects.
 
-## Lab: Audit the Capstone Workflow
-1. Select three specific decisions or failures from Weeks 1–9 and link to their logs or diffs.
-2. Explain the cause and the evidence; do not assume every failure was a bad prompt.
-3. Test one workflow improvement and record its result, including an inconclusive or negative result.
-4. Write `docs/ai-workflow-sop.md`, with rules grounded in those examples.
-5. Record the experiment in `docs/prompt-logs/week-10.md` and use the SOP during Week 11 interview practice.
+## Session Plan (180 minutes)
+Core instruction (75m), an instructor demonstration (45m), and student practice/review (60m). Inspect student entry evidence before expanding scope. The required assignment is in [homework.md](homework.md); avoid maintaining a second specification in slides.
 
-## Deliverable
-A personal AI Workflow SOP, three linked case studies, and one measured improvement experiment. Grade the reasoning and validation evidence, not the number of tools used or the apparent speed of generation.
+## Core Instruction
+### 1. Audit the record (25m)
+Identify recurring problems in context, requirements, tests, tool use, coordination, or review. Distinguish correlation from a demonstrated cause. Revisit the initial Week 1 method and the Week 3/4 supervision choices.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+### 2. Run a fair comparison (25m)
+Choose one bounded task and change one workflow factor. Use the same baseline and acceptance checks; record time, review effort, tool usage where observable, defects, and caveats. A single trial supports a local decision, not a universal ranking.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+### 3. Write operational rules (25m)
+Turn findings into actionable steps with triggers, inputs, checks, and escalation. Keep skills and project instructions concise; retire ineffective rules. Explain when to work in the loop, on the loop, or with multiple agents.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+## Instructor Demonstration (45m)
+Compare two disclosed runs of the same small task: one with a vague request and one with a verified context map and acceptance checks. Show the actual diffs, failures, review effort, and any inconclusive result. Rewrite one workflow rule based on the evidence.
+
+Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
+
+## Student Practice and Review (60m)
+Choose a repeated issue (15m), design and begin the comparison (30m), and peer-review whether the proposed conclusion is supported (15m).
+
+## Misconception to Address
+Do not convert “this run was faster” into “this tool is always better.” Ask what was held constant and what could explain the result.
+
+## Close the Session
+Have students name one decision, the evidence supporting it, and the next missing check. Confirm they can find the homework and know what to submit. Do not equate partially demonstrated behavior with a completed milestone.
+
+## Connection to the Next Stage
+Week 11 tests whether students can explain and adapt this workflow under interview constraints.
+
+## Materials
+[Presenter notes](lecture-script.md) · [Slides](presentation.md) · [Student reference](reference.md) · [Homework](homework.md)

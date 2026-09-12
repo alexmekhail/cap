@@ -1,22 +1,49 @@
-# Week 5: Production Project Entry — Architecture, API & Frontend
+# Week 5: Production Entry: One Working Slice
 
-## Entry Point
-Choose an approved domain from the master curriculum. Start a new repository or adapt Week 4 work if it fits the production objectives. Do not assume the previous app has a Python backend, database, or migration history. Review prior evidence to identify gaps in verification and supervision.
+## Teaching Purpose
+Turn the AI workflow skills from Weeks 1–4 into a small application whose interfaces, data, and behavior you can explain.
 
-The instructor supplies a rehearsed minimal FastAPI/SQLAlchemy/Alembic and React/TypeScript starter before class, with setup/run/check commands. Use it to reach one coherent slice within the 5–10 hour homework budget; adapting a starter is allowed when students explain it.
+## Entry Check
+Start anew or continue Week 4 work. Use the supplied inventory starter as an executable reference, then choose one approved domain and one narrow user journey. A new stack is not an extra-credit exercise.
 
-## Technical Deep Dive (75m)
-- **Architecture and data (25m):** Define UI → API → business logic → database boundaries. Write an ADR comparing a simple stateful app with batch/event-driven alternatives. Design keys, relationships, uniqueness, deletion behavior, and an index tied to a real query. Establish initial migrations and demonstrate a schema change preserving seeded records.
-- **API contract (25m):** Define request/response validation and failure behavior. Separate routes from business logic. Bound retries and use deterministic fixtures for external integrations.
-- **Frontend integration (25m):** Connect the provided React/TypeScript UI to one complete API workflow, including loading, empty, success, and error states. Keep credentials on the backend.
+## Exit Evidence
+A reproducible UI → API → database slice, a short ADR, an API contract, and an initial migration. This repository continues through Week 12.
 
-## Lab and Independent Work
-1. Decide whether to start anew or continue, and record the reason.
-2. Establish the ADR, API contract, schema, and reproducible run/check commands.
-3. Build one narrow UI-to-API-to-database workflow with SQLite, SQLAlchemy, and Alembic.
-4. Demonstrate the initial migration and a data-preserving schema change. Check constraints and one failure case.
-5. Integrate an external data source where appropriate to the domain; isolate it behind a test fixture.
-6. Record checks, architectural decisions, and interventions in `docs/prompt-logs/week-05.md`.
+## Session Plan (180 minutes)
+Core instruction (75m), an instructor demonstration (45m), and student practice/review (60m). Inspect student entry evidence before expanding scope. The required assignment is in [homework.md](homework.md); avoid maintaining a second specification in slides.
 
-## Deliverable
-A PR with a working slice, integrated UI, ADR, contract, schema/migrations, tests, and evidence for success and failure behavior. This is the production project retained through Week 12. Week 6 strengthens quality gates; Week 7 validates PostgreSQL and adds containers; Week 8 deploys.
+## Core Instruction
+### 1. Scope and architecture (25m)
+Choose one user, one operation, and one source of data. Draw the boundaries and identify one failure at each boundary. Compare a stateful application with batch/event alternatives; record why the simplest suitable pattern wins.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+### 2. Data and API contract (25m)
+Explain keys, foreign keys, uniqueness, and input validation using the starter. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+### 3. Integration and feedback (25m)
+Trace a browser request through FastAPI to SQLAlchemy and back. Demonstrate loading, empty, success, and error states. Keep frontend work bounded by adapting the supplied reference.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+## Instructor Demonstration (45m)
+Use the inventory starter: create a Books category through the seed command, add an item from the UI, reload, then submit a duplicate and an unknown category. Trace the 409 and 422 responses through the client and backend. Open the migration and explain the foreign key. Have the agent propose a domain adaptation, inspect the proposed boundary changes, and implement one small part.
+
+Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
+
+## Student Practice and Review (60m)
+Pairs map the reference request path (15m), adapt one domain operation (30m), and review the ADR and contract against the running result (15m).
+
+## Misconception to Address
+Use a duplicate item or nonexistent category. The instructor should explain why those are different failures rather than mapping every error to a generic response.
+
+## Close the Session
+Have students name one decision, the evidence supporting it, and the next missing check. Confirm they can find the homework and know what to submit. Do not equate partially demonstrated behavior with a completed milestone.
+
+## Connection to the Next Stage
+Week 6 strengthens this slice and defines the access model before deployment. The follow-up data-preserving migration moves to Week 7 so Week 5 remains achievable.
+
+## Materials
+[Presenter notes](lecture-script.md) · [Slides](presentation.md) · [Student reference](reference.md) · [Homework](homework.md)

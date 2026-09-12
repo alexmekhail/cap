@@ -19,7 +19,7 @@ This residency does not teach students how to be passive consumers of AI. It tra
 | **Day-one access** | Bring a GitHub account and your own paid AI subscription or agent plan with both VS Code integration and terminal support. Verify access in both environments; separate usage limits or billing may apply. |
 | **Distribution** | All course materials, presenter notes, demos, references, and solutions are shared in full through GitHub. Students create repositories or fork existing ones and submit repository/PR links. |
 | **Mentorship** | High-leverage coaching capped at 30-60 mins per mentee weekly. Mentors focus on architecture and AI steering, not syntax debugging. |
-| **The "2-Hour Hatch"** | Students must attempt to unblock themselves via AI for 2 hours, documenting their prompt strategy in a structured log, before requesting human mentor intervention. |
+| **The "2-Hour Hatch"** | Use structured self-help: change approach after about 45 minutes, inspect evidence directly by 90 minutes, and seek targeted mentor help by two hours. Escalate access, data-loss, security, or spending blockers immediately; do not repeat failed agent runs to satisfy a timer. |
 
 ---
 
@@ -29,7 +29,7 @@ To prevent students from relying on simple "one-shot" prompts, the residency dev
 **The Application Architecture:**
 1.  **Data/Event Ingestion:** Handling user inputs, webhooks, or external API streams.
 2.  **Business Logic Layer:** A Python backend for complex rules, transactions, and transformations.
-3.  **Persistence:** Cloud-native databases (PostgreSQL/Firestore).
+3.  **Persistence:** PostgreSQL for the shared production path; alternative persistence requires an explicit equivalent learning plan.
 4.  **Interface:** A dashboard or consumer UI interacting with the backend (Strict TypeScript).
 5.  **Infrastructure:** Full Dockerization and automated CI/CD.
 
@@ -45,22 +45,18 @@ To prevent students from relying on simple "one-shot" prompts, the residency dev
 ---
 
 ## **The Standardized Agentic Workspace (SAW)**
-Students work out of a unified repository environment that automatically enforces rigorous SDLC practices.
+Students adapt the runnable reference workspace and configure explicit engineering checks. Branch protection and review policy must be enabled in their own repository; copying a workflow alone does not prevent merging.
 *   **Structure:** `/src`, `/tests`, `/infrastructure`, and specifically `/docs/prompt-logs`.
-*   **The Automated Linter:** An AI-powered GitHub Action that automatically blocks Pull Requests failing to meet Test Coverage, Security, or Prompt Quality standards.
+*   **Automated checks:** The included workflow installs dependencies, checks coverage/lint/static security/dependency findings, builds the UI, and validates evidence-log structure. It does not assess prompt quality or call an LLM.
 
 ---
 
 ## **AI-Augmented Mentorship & Evaluation**
-Mentors evaluate working demonstrations, engineering decisions, and verification evidence; compilation alone is insufficient. To protect mentor capacity (limiting their involvement to 5-10 minutes per PR), we use a highly automated **"LLM-as-a-Judge"** pipeline.
+Mentors evaluate working demonstrations, engineering decisions, and verification evidence. Automated checks supply evidence; they do not establish complete correctness or assign a final grade.
 
-**Automation Breakdown (80% AI / 20% Manual):**
-*   **AI Auto-Grader:** A GitHub Action automatically parses the student's PR diff and mandatory **Prompt Logs**. It proposes evidence-backed, provisional 1-5 scores for mentor review in:
-    1.  **Context Management:** Did the log show surgical file selection, or did they dump the whole repo?
-    2.  **Iterative Correction:** Did they diagnose failures, establish effective automated checks, and intervene when those checks were insufficient?
-*   **Manual Mentor Review:** The AI Grader outputs a "Mentor Time-Saver Summary," flagging specific architectural risks. The human mentor spends their 5-10 minutes verifying the final two dimensions:
-    3.  **Structural Oversight:** Did the student strictly enforce architectural boundaries against the AI's tendency to write monolithic code?
-    4.  **System Integrity:** Does the system actually perform under load, handle edge cases, and maintain security correctly without blind reliance on AI?
+The repository includes an optional **LLM-assisted review prompt**, not an implemented model-calling GitHub Action. An instructor may supply the week, assignment, diff, and selected evidence to that prompt using an approved tool, then verify the resulting provisional assessment. Student text and code are untrusted evidence, not instructions to the reviewer.
+
+Use the shared dimensions: context management, validation/correction, structural oversight, and system integrity. Week 1 has an exploratory rubric; Weeks 2–4 use their homework weights; Weeks 5–12 use the four dimensions equally. Mentors spend an initial 5–10 minutes per review and use the weekly 30–60 minute coaching allocation for unresolved gaps. Require a working demonstration, an architecture explanation, and a truthful account of what the student trusted, checked, and corrected. Do not promise employment or production readiness based on course completion alone.
 
 ---
 
@@ -76,9 +72,9 @@ Mentors evaluate working demonstrations, engineering decisions, and verification
 ### **Phase 2: Production (Weeks 5-8)**
 *Focus: Building, testing, and deploying the core cloud application to ensure functional skills are gained.*
 *   **W5 | Production Entry:** Start a new cloud application or carry forward a suitable Week 4 project; establish architecture, data model, migrations, API contracts, and an integrated frontend.
-*   **W6 | Quality:** Engineering Quality (Pytest fixtures for 429/422 errors, coverage enforcement, security scans via `bandit`).
+*   **W6 | Quality & Access:** Contract-focused tests, access policy, coverage, security/dependency checks, and evidence-based quality gates.
 *   **W7 | CI/CD:** Infrastructure (Optimized multi-stage Dockerfiles, `docker-compose` networking, GitHub Actions).
-*   **W8 | Livesite:** Deployment (Vercel frontend, GCP Cloud Run/AWS App Runner, strict IAM permission reviews, Cloud Cost Budgets).
+*   **W8 | Deployment:** A bounded demonstration with managed persistence, explicit access controls, service identity, budget alerts, verification, recovery, and cleanup.
 
 ### **Phase 3: Mastery & Workflows (Weeks 9-12)**
 *Focus: Advanced operational debugging, interview prep, and workflow optimization.*
@@ -89,7 +85,7 @@ Mentors evaluate working demonstrations, engineering decisions, and verification
 
 **Assessment alignment:** Week 1 uses the field-report rubric; Weeks 2–4 use their published assignment weights, with the shared engineering rubric supplying evidence anchors. Weeks 5–12 use the shared rubric. Credit verified outcomes, architecture decisions, and justified intervention; do not reward app size or penalize iteration count by itself.
 
-## Weeks 1–4: Materials and Delivery
+## Weekly Materials and Delivery
 
 The weekly folders are the source of classroom and assignment materials. Each week has a talk outline, presenter notes, a demo or speaker guide, slide source, student reference, and a separate authoritative homework document. Presenter notes and reference solutions are visible to students; use them openly and disclose reuse in submissions.
 
@@ -99,7 +95,15 @@ The weekly folders are the source of classroom and assignment materials. Each we
 | 2 | [Guided practice materials](curriculum/weeks/02/README.md) | [A fresh application](curriculum/weeks/02/homework.md) |
 | 3 | [Terminal and sustained-agent materials](curriculum/weeks/03/README.md) | [Excalidraw feature choice](curriculum/weeks/03/homework.md) |
 | 4 | [Orchestration materials](curriculum/weeks/04/README.md) | [An open-ended hard build](curriculum/weeks/04/homework.md) |
+| 5 | [Week 5 materials](curriculum/weeks/05/README.md) | [Assignment and assessment](curriculum/weeks/05/homework.md) |
+| 6 | [Week 6 materials](curriculum/weeks/06/README.md) | [Assignment and assessment](curriculum/weeks/06/homework.md) |
+| 7 | [Week 7 materials](curriculum/weeks/07/README.md) | [Assignment and assessment](curriculum/weeks/07/homework.md) |
+| 8 | [Week 8 materials](curriculum/weeks/08/README.md) | [Assignment and assessment](curriculum/weeks/08/homework.md) |
+| 9 | [Week 9 materials](curriculum/weeks/09/README.md) | [Assignment and assessment](curriculum/weeks/09/homework.md) |
+| 10 | [Week 10 materials](curriculum/weeks/10/README.md) | [Assignment and assessment](curriculum/weeks/10/homework.md) |
+| 11 | [Week 11 materials](curriculum/weeks/11/README.md) | [Assignment and assessment](curriculum/weeks/11/homework.md) |
+| 12 | [Week 12 materials](curriculum/weeks/12/README.md) | [Assignment and assessment](curriculum/weeks/12/homework.md) |
 
 Week 2 introduces project instructions and skills with a small example; Week 3 develops them into tools for maintaining context across sustained work. Week 4 extends supervision to multiple agents. Gas Town is a possible instructor demonstration, not a required student purchase or a finalized course dependency. The instructor brings one working orchestrator setup and contrasts it with three harness designs.
 
-The Week 4 problem need not become the production capstone. At Week 5, students may begin anew or continue if their project fits the production learning objectives. Do not assume a Week 4 Python backend, SQL schema, or migration history.
+The Week 4 problem need not become the production capstone. At Week 5, students may begin anew or continue if their project fits the production learning objectives. Do not assume a Week 4 Python backend, SQL schema, or migration history. Week 5 establishes a narrow slice and initial migration; Week 7 teaches follow-up migration and PostgreSQL transition.

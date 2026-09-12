@@ -1,23 +1,49 @@
-# Week 7: Infrastructure & CI/CD
+# Week 7: Containers, PostgreSQL, and Delivery
 
-## Talk Outline: From Code to Container
-### Technical Deep Dive (75m)
-- **Dockerizing with AI:** How to safely generate `Dockerfile` and `docker-compose.yml`.
-- **The CI/CD Pipeline:** Prompting for GitHub Actions workflows.
-- **AI Security Threats:** Understanding how AI often hallucinates insecure defaults (e.g., exposing internal ports, omitting CSRF tokens) and how to explicitly prompt for secure configurations.
-- **Persistence transition:** Apply the Week 5 migrations to an empty PostgreSQL database, seed it, and test constraints and query behavior. Document dialect differences; verify record counts and key relationships if transferring existing SQLite records.
-- **Environment Parity:** Ensuring the AI understands the difference between local dev and production builds.
+## Teaching Purpose
+Reproduce the application outside the development machine and make database changes without losing the evidence or data the system depends on.
 
-## Lab Instructions: Containerization
-### Objective
-Fully dockerize the Production-Grade Cloud Application (Backend, Frontend, and Database mock).
+## Entry Check
+Bring the Week 6 application, passing local checks, initial migration, and access policy. Install Docker before class; a setup blocker must be recorded rather than hidden behind a successful local run.
 
-### Steps
-1. **The Dockerfile:** Prompt the AI to create a multi-stage Dockerfile for the frontend (Stage 1: Node.js build, Stage 2: Nginx static serving) and an optimized Python 3.11 slim Dockerfile utilizing dependency caching for the backend.
-2. **Compose:** Generate a `docker-compose.yml` that networks the backend, frontend, and a Postgres database container, injecting the `DATABASE_URL` into the backend via environment variables.
-3. **Database verification:** Run migrations and the backend tests against PostgreSQL. Record migration, seed, and integrity evidence; do not assume SQLite passing results transfer unchanged.
-4. **CI Expansion:** Ask AI to update your GitHub Actions workflow to build and test the Docker images on every PR.
-5. **The Log:** Document the infrastructure prompts in `docs/prompt-logs/week-07.md`.
+## Exit Evidence
+A containerized app connected to PostgreSQL, with explicit migration steps, data-preservation evidence, and CI image build checks.
 
-### Deliverable
-A PR containing the Docker configuration, allowing the mentor to run the full stack via `docker-compose up`.
+## Session Plan (180 minutes)
+Core instruction (75m), an instructor demonstration (45m), and student practice/review (60m). Inspect student entry evidence before expanding scope. The required assignment is in [homework.md](homework.md); avoid maintaining a second specification in slides.
+
+## Core Instruction
+### 1. Build and runtime boundaries (25m)
+Inspect the multi-stage reference Dockerfile: Node builds static React assets; Python serves the API and assets on the same origin. Dependencies used at build time differ from runtime dependencies. Keep secrets out of layers and inspect the runtime user.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+### 2. Database transition and migrations (25m)
+Run migrations on PostgreSQL, seed records, and verify constraints and query behavior. SQLite results alone do not establish PostgreSQL behavior. Add a nullable field, upgrade against existing data, and compare IDs and relationships afterward.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+### 3. Delivery and recovery (25m)
+Separate image build, migration, and app startup. Define health checks, rollout verification, and what happens if migration or startup fails. Do not have every replica race to run migrations. A rollback may require forward repair rather than a destructive downgrade.
+
+**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
+
+## Instructor Demonstration (45m)
+Walk through the supplied Compose file, build the image, start PostgreSQL, run the initial migration and seed as one-off commands, then start the app. Create an item and restart only the app to demonstrate persistence. Apply an additive description-column migration in a disposable database and compare saved records before and after.
+
+Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
+
+## Student Practice and Review (60m)
+Trace configuration and networking (15m), run the supplied Compose sequence or inspect a labeled recording if Docker is unavailable (30m), then review migration/recovery plans (15m).
+
+## Misconception to Address
+Change the database hostname to an invalid service name in a disposable environment. Read the failure and fix the configuration. Contrast this with schema mismatch: identical symptoms at the UI may require different repairs.
+
+## Close the Session
+Have students name one decision, the evidence supporting it, and the next missing check. Confirm they can find the homework and know what to submit. Do not equate partially demonstrated behavior with a completed milestone.
+
+## Connection to the Next Stage
+Week 8 deploys the tested image with managed persistence and an explicit release/access decision.
+
+## Materials
+[Presenter notes](lecture-script.md) · [Slides](presentation.md) · [Student reference](reference.md) · [Homework](homework.md)

@@ -12,7 +12,7 @@ GitHub repositories or forks with run instructions, task specifications, project
 ## Week 5 Entry Decision
 The Week 4 application may continue if it fits the production objectives, or the student may start a new application. It is not necessarily a Python/SQL application. Carry forward the engineering methods even when starting a new repository.
 
-Week 5 must explicitly establish the production baseline: approved domain, architecture decision, API contract, relational schema, migrations, backend, and integrated frontend. Scope this to one working slice. Do not assume these artifacts were created during Week 4 orchestration.
+Week 5 must explicitly establish the production baseline: approved domain, architecture decision, API contract, relational schema, initial migration, backend, and integrated frontend. Week 7 adds the data-preserving follow-up migration and PostgreSQL verification. Scope this to one working slice. Do not assume these artifacts were created during Week 4 orchestration.
 
 ## Production Sequence
 | Week | Focus |

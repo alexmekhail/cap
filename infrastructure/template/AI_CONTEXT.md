@@ -5,7 +5,7 @@ As an engineer in CAP 2.0, you are not writing code from scratch; you are steeri
 
 1.  **Prompt Privacy:** NEVER send proprietary data, PII, or internal credentials to an external LLM. Redact all secrets before prompting.
 2.  **The Prompt Log:** You must maintain a log of your prompts in `docs/prompt-logs/`. This is how mentors evaluate your Context Management and Iterative Correction skills.
-3.  **Verification First:** Do not merge AI code that lacks tests. The Automated Agentic Linter will reject PRs that lower test coverage.
+3.  **Verification First:** Do not merge AI code that lacks tests. Run the configured checks and inspect meaningful behavior; enable branch protection in your own repository if these checks must block merging.
 
 ## Project: Production-Grade Cloud Application
 This repository will house your 12-week project.

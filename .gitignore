@@ -1,1 +1,8 @@
 .DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+curriculum/weeks/04/demo/plan.json
+curriculum/weeks/04/demo/results.json
