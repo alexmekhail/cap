@@ -29,7 +29,7 @@ Explain the affected data flow, tests, tradeoffs, and remaining risks. Present a
 **Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
 
 ## Instructor Demonstration (45m)
-Use the public interview exercise in the reference. First explain the authorization defect without AI. Then allow the agent to propose a repair and tests, inspect the change, and prove that user A cannot read user B’s record while the owner still can. Use prepared tests as disclosed calibration, not a secret answer.
+Prepare a small function that returns a record by ID without checking whether the authenticated actor owns it. First explain the authorization defect without AI. Then allow the agent to propose a repair and tests, inspect the change, and prove that user A cannot read user B’s record while the owner still can. Use prepared tests as disclosed calibration, not a secret answer.
 
 Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
 

@@ -1,7 +1,7 @@
 # Week 8 Homework: Deployment and Operating Boundaries
 
 ## Goal and Starting Point
-Deploy the production project as a bounded demonstration. Use either authenticated/authorized writes with the Week 6 tests or a read-only public mode. Do not expose the unauthenticated starter write endpoint.
+Deploy the production project as a bounded demonstration. Use either authenticated/authorized writes with the Week 6 tests or a read-only public mode. Do not expose unauthenticated write endpoints.
 
 Bring a working container image, PostgreSQL migration evidence, and the Week 6 access policy. Instructor rehearses one cloud path; students arrange cloud access and a personal budget before class. A cloud account is additional to the day-one LLM requirement.
 

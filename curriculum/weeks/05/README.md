@@ -10,9 +10,7 @@ Turn the AI workflow skills from Weeks 1–4 into a small application whose inte
 ## Shared Teaching Materials
 [Presenter notes](lecture-script.md) · [Slide source](presentation.md) · [Instructor demo](instructor-demo.md)
 
-All materials are shared through GitHub, including references and solutions. Disclose reuse and explain your own contribution. The [production starter](../../../infrastructure/template/README.md) supports the reference exercises; it is not a completed student project.
+All materials are shared through GitHub, including references and solutions. Disclose reuse and explain your own contribution. Classroom application examples must be selected or prepared by the instructor; this curriculum contains teaching materials, not a supplied application.
 
 ## Exit Evidence
 A reproducible UI → API → database slice, a short ADR, an API contract, and an initial migration. This repository continues through Week 12.
-
-The starter includes a working two-table inventory slice, API tests, initial Alembic migration, React UI, and a copyable CI workflow. It is deliberately incomplete as a production product; see its README for access and deployment boundaries.

@@ -1,26 +1,45 @@
-name: Engineering evidence checks
-on: [push, pull_request]
-permissions:
-  contents: read
+name: Agentic Linter
+
+on:
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  checks:
+  review:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - run: python -m pip install -r requirements-lock.txt
-      - run: pytest --cov=src/backend --cov-fail-under=80
-      - run: ruff check src/backend tests
-      - run: bandit -r src/backend -q
-      - run: pip-audit -r requirements-lock.txt
-      - run: python tools/check_prompt_logs.py
-      - run: npm ci && npm run build && npm audit --omit=dev --audit-level=high
-        working-directory: src/frontend
+      - uses: actions/checkout@v3
+
+      - name: 1. Security Scan (Detect Hallucinated Secrets)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 2. Test Coverage Audit
+        run: |
+          echo "Running tests..."
+          # Enforcing the coverage gate
+          pytest --cov=src --cov-fail-under=80
+
+      - name: 3. Prompt Quality Check
+        run: |
+          echo "Verifying Prompt Logs exist and follow the mandatory template..."
+          if ! ls docs/prompt-logs/*.md 1> /dev/null 2>&1; then
+            echo "Error: You must submit a Prompt Log showing how you steered the AI for this feature."
+            exit 1
+          fi
+
+          for log in docs/prompt-logs/*.md; do
+            if [[ "$log" == *"TEMPLATE.md"* || "${log##*/}" == "week-01.md" ]]; then
+              continue
+            fi
+            # Verify mandatory headers
+            for header in "## 1. Goal and Acceptance Criteria" "## 2. Context and Architecture" "## 3. Validation and Findings" "## 4. Agent Recovery and Human Intervention" "## 5. Outcome and Limits"; do
+              if ! grep -Fqx "$header" "$log"; then
+                echo "Error: Prompt log $log is missing mandatory header: $header"
+                exit 1
+              fi
+            done
+          done
+          echo "Prompt logs verified. Ready for mentor review of Iterative Correction."

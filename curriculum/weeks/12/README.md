@@ -10,7 +10,7 @@ Present a coherent application and defend the engineering decisions, verificatio
 ## Shared Teaching Materials
 [Presenter notes](lecture-script.md) · [Slide source](presentation.md) · [Instructor demo](instructor-demo.md)
 
-All materials are shared through GitHub, including references and solutions. Disclose reuse and explain your own contribution. The [production starter](../../../infrastructure/template/README.md) supports the reference exercises; it is not a completed student project.
+All materials are shared through GitHub, including references and solutions. Disclose reuse and explain your own contribution. Classroom application examples must be selected or prepared by the instructor; this curriculum contains teaching materials, not a supplied application.
 
 ## Exit Evidence
 A final application demonstration, engineering defense, reproducible portfolio repository, and an actionable job-search preparation plan.

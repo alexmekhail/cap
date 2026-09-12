@@ -36,7 +36,7 @@ A deployed synthetic-data demonstration, release evidence, least-privilege ident
 
 # Homework
 
-Deploy the production project as a bounded demonstration. Use either authenticated/authorized writes with the Week 6 tests or a read-only public mode. Do not expose the unauthenticated starter write endpoint.
+Deploy the production project as a bounded demonstration. Use either authenticated/authorized writes with the Week 6 tests or a read-only public mode. Do not expose unauthenticated write endpoints.
 5–10 hours. Required criteria and evidence: homework.md.
 
 ---

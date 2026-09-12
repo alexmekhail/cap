@@ -1,9 +1,9 @@
 # Week 6 Homework: Quality, Access, and Evidence
 
 ## Goal and Starting Point
-Strengthen the Week 5 project and make the release access decision. Configure the provided checks for your project, add meaningful failure cases, and demonstrate at least one intentionally incorrect implementation failing a relevant test.
+Strengthen the Week 5 project and make the release access decision. Configure checks appropriate to your project, add meaningful failure cases, and demonstrate at least one intentionally incorrect implementation failing a relevant test.
 
-Bring the Week 5 slice, contract, migrations, and a working local check command. If setup is incomplete, use the reference starter to learn the checks while recording the gap in your own project.
+Bring the Week 5 slice, contract, migrations, and a working local check command. If setup is incomplete, pair on an instructor-selected example to learn the checks while recording the gap in your own project.
 
 ## Required Acceptance Evidence
 - Success and failure tests for the core contract, including persistence and input handling; test an upstream error with a fake response if your app uses an external service.

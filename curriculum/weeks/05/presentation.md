@@ -18,7 +18,7 @@ Choose one user, one operation, and one source of data. Draw the boundaries and 
 
 # Data and API contract
 
-Explain keys, foreign keys, uniqueness, and input validation using the starter. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
+Explain keys, foreign keys, uniqueness, and input validation using a small example from the instructor’s chosen project. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
 
 ---
 
@@ -36,7 +36,7 @@ A reproducible UI → API → database slice, a short ADR, an API contract, and 
 
 # Homework
 
-Build one complete domain-specific operation on the production starter or your compatible Week 4 app. Avoid a clone-sized feature list: for a library, add a book to a collection; for a marketplace, register a listing; for a content service, save metadata.
+Build one complete domain-specific operation in a new project or your compatible Week 4 app. Avoid a clone-sized feature list: for a library, add a book to a collection; for a marketplace, register a listing; for a content service, save metadata.
 5–10 hours. Required criteria and evidence: homework.md.
 
 ---

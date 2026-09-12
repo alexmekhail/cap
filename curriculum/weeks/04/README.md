@@ -11,5 +11,3 @@ Start with the [student reference](reference.md), then read the [homework](homew
 - [Homework and assessment](homework.md)
 
 Everything in this folder is shared with students. Reference implementations illustrate methods; disclose what you reused and explain your own decisions. Homework requirements live in `homework.md`, not in duplicate slide or lecture assignments.
-
-[Runnable harness artifact-flow reference](demo/README.md) — deterministic replay plus the explicit live-adapter contract.

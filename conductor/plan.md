@@ -26,7 +26,7 @@ Students must select one of the following domains to apply this pattern to:
 ## 3. The Standardized Agentic Workspace (SAW)
 A unified environment enforcing rigorous SDLC practices.
 *   **Repo Structure:** `/src`, `/tests`, `/infrastructure`, `/docs/prompt-logs`.
-*   **Automated checks:** The reference workflow runs tests, lint, static security/dependency checks, frontend build, and log-structure validation. It does not run an AI grader. See the starter README for setup.
+*   **Automated checks:** Students configure tests, lint, security/dependency checks, frontend builds, and log validation for their own projects in Week 6. The workflow file is an illustrative template requiring adaptation; no application pipeline or AI grader is supplied.
 
 ## 4. AI-Augmented Mentorship
 Mentorship is strictly high-leverage (architecture, cloud, prompting strategies).
@@ -106,9 +106,11 @@ Commit and push completed, verified revisions on the existing feature branch. Do
 
 The complete 12-week sequence now has a weekly index, actionable outline, presenter notes, slide source, student reference, standalone homework, and instructor demo guide. Weeks 1–4 retain the agreed inspiration → guided VS Code → sustained terminal agent → orchestration progression. Week 5 starts or adapts one production slice; Week 6 defines quality and access; Week 7 covers PostgreSQL, follow-up migrations, and containers; Weeks 8–12 cover release, incident response, workflow improvement, interviews, and portfolio defense.
 
-The supplied production reference includes a working React/TypeScript and FastAPI/SQLAlchemy inventory slice, initial Alembic migration, seed command, tests, Docker/Compose configuration, dependency locks, and a copyable CI workflow. It uses synthetic data and intentionally leaves production authentication/authorization to the Week 6 access decision. The workflow performs deterministic checks and log-structure validation; LLM-assisted assessment remains a separate, optional mentor procedure.
+The review covers curriculum content, assignment scope, assessment, transitions, and supporting teaching examples. This repository does not supply a built production application. Demos specify the behavior an instructor should prepare or select in an existing project; they are not claims that those application demos have already been implemented or rehearsed.
 
-Local verification covers all weekly material links and rubric totals, the single-agent failure/recovery fixture, harness handoff checks, the authorization exercise, backend tests/coverage/lint/static security, dependency audits, frontend build, and browser create/reload/error behavior. Hosted CI additionally builds and exercises the PostgreSQL container reference. Check its result for the reviewed commit before treating that path as verified.
+The curriculum review checks weekly material structure, local links, and rubric totals locally; no hosted CI is required or configured. Small existing teaching fixtures are separate from students' application projects. LLM-assisted assessment remains a separate, optional mentor procedure; the pre-existing quality workflow is an illustrative template that students must adapt.
+
+**Scope boundary:** Curriculum ownership covers planning, writing, review, and teaching materials. It does not authorize building a new application or application infrastructure unless the instructor explicitly requests that work.
 
 ### Cohort Preparation Still Required
 - Confirm three Week 1 speakers and permission to publish their materials.
@@ -118,3 +120,5 @@ Local verification covers all weekly material links and rubric totals, the singl
 - Publish the Week 12 presentation order and use parallel review groups when cohort size exceeds the single-room capacity.
 
 These are delivery prerequisites involving guests, cohort tools, or live infrastructure. They are distinguished from the repository review and locally executable reference checks rather than represented as already completed.
+
+**Repository boundary:** Keep this branch focused on curriculum documents and teaching materials. Do not add applications, hosted CI, or deployment infrastructure without a separate explicit request. Retain branch history, and do not merge.

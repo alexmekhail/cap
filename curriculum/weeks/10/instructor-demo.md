@@ -4,7 +4,7 @@
 Three evidence-backed case studies, one bounded improvement experiment, and a personal operating procedure usable in interviews and future projects.
 
 ## Preparation
-Use the [production reference](../../../infrastructure/template/README.md) where applicable, or a disclosed cohort reference with the same behavior. Record the base commit, runtime/tool versions, exact commands, and any account requirements. Prepare a working baseline, a deliberately failing checkpoint, and a verified recovery. Public reference solutions are acceptable when clearly identified.
+Select an existing small application or an instructor-prepared example with the required behavior. The examples below specify what to demonstrate; no application is supplied by this curriculum. Record the base commit, runtime/tool versions, exact commands, and any account requirements. Prepare a working baseline, a deliberately failing checkpoint, and a verified recovery. Public reference solutions are acceptable when clearly identified.
 
 ## Demonstration Sequence
 1. **Establish the claim (5m):** State the user-visible behavior and the acceptance check. Ask students to predict what will happen.

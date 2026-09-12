@@ -35,6 +35,3 @@ Where was control located? What was mechanically enforced? What depended on inst
 
 ## Fallback
 Show the published checkpoints and artifact flow if live tooling fails. Never imply a replay was live agent work. Students may adapt the provided setup, but their submissions must show their own execution and verification evidence.
-
-## Included Runnable Reference
-The [artifact-flow demo](demo/README.md) provides `plan.py`, `dispatch.py`, and `verify.py`, a disclosed replay adapter, and failure-path tests. Use it as the concrete script-driven baseline before connecting a real provider adapter. It validates handoffs, not the finished application.

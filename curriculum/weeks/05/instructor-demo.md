@@ -4,12 +4,12 @@
 A reproducible UI → API → database slice, a short ADR, an API contract, and an initial migration. This repository continues through Week 12.
 
 ## Preparation
-Use the [production reference](../../../infrastructure/template/README.md) where applicable, or a disclosed cohort reference with the same behavior. Record the base commit, runtime/tool versions, exact commands, and any account requirements. Prepare a working baseline, a deliberately failing checkpoint, and a verified recovery. Public reference solutions are acceptable when clearly identified.
+Select an existing small application or an instructor-prepared example with the required behavior. The examples below specify what to demonstrate; no application is supplied by this curriculum. Record the base commit, runtime/tool versions, exact commands, and any account requirements. Prepare a working baseline, a deliberately failing checkpoint, and a verified recovery. Public reference solutions are acceptable when clearly identified.
 
 ## Demonstration Sequence
 1. **Establish the claim (5m):** State the user-visible behavior and the acceptance check. Ask students to predict what will happen.
 2. **Inspect the baseline (10m):** Show relevant code, configuration, and evidence. Distinguish what is known from what the agent needs to inspect.
-3. **Perform the change/exercise (15m):** Use the inventory starter: create a Books category through the seed command, add an item from the UI, reload, then submit a duplicate and an unknown category. Trace the 409 and 422 responses through the client and backend. Open the migration and explain the foreign key. Have the agent propose a domain adaptation, inspect the proposed boundary changes, and implement one small part.
+3. **Perform the change/exercise (15m):** For an inventory example, demonstrate a category and item, reload the UI, then submit a duplicate and an unknown category. Prepare this behavior in the chosen classroom project before the session. Trace the 409 and 422 responses through the client and backend. Open the migration and explain the foreign key. Have the agent propose a domain adaptation, inspect the proposed boundary changes, and implement one small part.
 4. **Investigate the failure (10m):** Use a duplicate item or nonexistent category. The instructor should explain why those are different failures rather than mapping every error to a generic response.
 5. **Defend the result (5m):** Independently rerun the decisive check. Show the diff/artifacts, remaining limitations, and where the evidence lives.
 

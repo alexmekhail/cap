@@ -4,7 +4,7 @@
 Establish checks that expose important failures and define who may perform each operation before the application is made public.
 
 ## Entry Check
-Bring the Week 5 slice, contract, migrations, and a working local check command. If setup is incomplete, use the reference starter to learn the checks while recording the gap in your own project.
+Bring the Week 5 slice, contract, migrations, and a working local check command. If setup is incomplete, pair on an instructor-selected example to learn the checks while recording the gap in your own project.
 
 ## Exit Evidence
 A useful test suite and CI gate, an explicit access model, and evidence that an incorrect implementation is rejected.
@@ -29,7 +29,7 @@ Run tests, coverage, lint, static security, dependency audits, and log-structure
 **Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
 
 ## Instructor Demonstration (45m)
-Run the starter tests, then deliberately remove the unknown-category guard or bypass an acceptance assertion in a disposable copy and observe the consequences. Show a real rejection of duplicate writes. Compare an ownership test for two users with a test that merely checks login exists. Review the included CI workflow and its read-only permissions.
+Run the chosen classroom project’s tests, then deliberately remove the unknown-category guard or bypass an acceptance assertion in a disposable copy and observe the consequences. Show a real rejection of duplicate writes. Compare an ownership test for two users with a test that merely checks login exists. Review an example CI workflow and explain its permissions and project-specific setup.
 
 Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
 

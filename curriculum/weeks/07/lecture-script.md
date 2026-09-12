@@ -5,7 +5,7 @@
 
 ## Explain the Three Decisions
 ### Build and runtime boundaries
-Inspect the multi-stage reference Dockerfile: Node builds static React assets; Python serves the API and assets on the same origin. Dependencies used at build time differ from runtime dependencies. Keep secrets out of layers and inspect the runtime user.
+Inspect a multi-stage Dockerfile in the chosen classroom project: Node builds static React assets; Python serves the API and assets on the same origin. Dependencies used at build time differ from runtime dependencies. Keep secrets out of layers and inspect the runtime user.
 
 Ask: “What would convince you this decision is correct for your project?” Follow with: “What would make you change your mind?” Use the student's actual domain rather than an abstract ideal architecture.
 

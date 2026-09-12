@@ -10,7 +10,7 @@ Choose one user, one operation, and one source of data. Draw the boundaries and 
 Ask: “What would convince you this decision is correct for your project?” Follow with: “What would make you change your mind?” Use the student's actual domain rather than an abstract ideal architecture.
 
 ### Data and API contract
-Explain keys, foreign keys, uniqueness, and input validation using the starter. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
+Explain keys, foreign keys, uniqueness, and input validation using a small example from the instructor’s chosen project. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
 
 Ask: “What would convince you this decision is correct for your project?” Follow with: “What would make you change your mind?” Use the student's actual domain rather than an abstract ideal architecture.
 

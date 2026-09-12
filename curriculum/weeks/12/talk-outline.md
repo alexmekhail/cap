@@ -29,7 +29,7 @@ Make the README reproducible, link the demo and case study, and write accurate p
 **Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
 
 ## Instructor Demonstration (15m)
-The instructor gives a short example presentation using the reference inventory app: a complete user workflow, a duplicate-write check, architecture boundaries, and an explicit limitation. Then show an unsupported claim and rewrite it using evidence. Publish the demo order and feedback format before class.
+The instructor gives a short example presentation using an instructor-selected application: a complete user workflow, a duplicate-write check, architecture boundaries, and an explicit limitation. Then show an unsupported claim and rewrite it using evidence. Publish the demo order and feedback format before class.
 
 Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
 

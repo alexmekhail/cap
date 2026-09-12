@@ -25,7 +25,4 @@ A parameterized SQL query can still return another user’s record if ownership 
 Read documentation for the version/service you actually use. These references support the concepts; exact environment setup must be recorded in your repository.
 
 ## Assignment
-[Homework and submission requirements](homework.md). The production reference is [here](../../../infrastructure/template/README.md).
-
-## Public Interview Exercise
-Use [authorization.py](demo/authorization.py) and [its checks](demo/test_authorization.py). From `demo/`, run `python3 -m unittest -v`. The vulnerable function intentionally ignores ownership; the corrected reference assumes actor identity was authenticated upstream. It demonstrates authorization only, not a complete authentication system. For the mock interview, vary the policy or data model and ask the candidate to explain it before using AI.
+[Homework and submission requirements](homework.md). Use your own project or the instructor’s chosen classroom example.

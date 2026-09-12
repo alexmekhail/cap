@@ -8,7 +8,7 @@ Turn the AI workflow skills from Weeks 1–4 into a small application whose inte
 Choose one user, one operation, and one source of data. Draw the boundaries and identify one failure at each boundary. Compare a stateful application with batch/event alternatives; record why the simplest suitable pattern wins.
 
 ### Data and API contract
-Explain keys, foreign keys, uniqueness, and input validation using the starter. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
+Explain keys, foreign keys, uniqueness, and input validation using a small example from the instructor’s chosen project. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
 
 ### Integration and feedback
 Trace a browser request through FastAPI to SQLAlchemy and back. Demonstrate loading, empty, success, and error states. Keep frontend work bounded by adapting the supplied reference.
@@ -25,4 +25,4 @@ Use a duplicate item or nonexistent category. The instructor should explain why 
 Read documentation for the version/service you actually use. These references support the concepts; exact environment setup must be recorded in your repository.
 
 ## Assignment
-[Homework and submission requirements](homework.md). The production reference is [here](../../../infrastructure/template/README.md).
+[Homework and submission requirements](homework.md). Use your own project or the instructor’s chosen classroom example.

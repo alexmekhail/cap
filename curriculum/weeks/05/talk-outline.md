@@ -4,7 +4,7 @@
 Turn the AI workflow skills from Weeks 1–4 into a small application whose interfaces, data, and behavior you can explain.
 
 ## Entry Check
-Start anew or continue Week 4 work. Use the supplied inventory starter as an executable reference, then choose one approved domain and one narrow user journey. A new stack is not an extra-credit exercise.
+Start anew or continue Week 4 work. Choose one approved domain and one narrow user journey; build anew or adapt an existing repository using AI. A new stack is not an extra-credit exercise.
 
 ## Exit Evidence
 A reproducible UI → API → database slice, a short ADR, an API contract, and an initial migration. This repository continues through Week 12.
@@ -19,7 +19,7 @@ Choose one user, one operation, and one source of data. Draw the boundaries and 
 **Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
 
 ### 2. Data and API contract (25m)
-Explain keys, foreign keys, uniqueness, and input validation using the starter. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
+Explain keys, foreign keys, uniqueness, and input validation using a small example from the instructor’s chosen project. Inspect the initial migration and generated OpenAPI. A schema diagram and contract should match the actual implementation.
 
 **Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
 
@@ -29,7 +29,7 @@ Trace a browser request through FastAPI to SQLAlchemy and back. Demonstrate load
 **Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
 
 ## Instructor Demonstration (45m)
-Use the inventory starter: create a Books category through the seed command, add an item from the UI, reload, then submit a duplicate and an unknown category. Trace the 409 and 422 responses through the client and backend. Open the migration and explain the foreign key. Have the agent propose a domain adaptation, inspect the proposed boundary changes, and implement one small part.
+For an inventory example, demonstrate a category and item, reload the UI, then submit a duplicate and an unknown category. Prepare this behavior in the chosen classroom project before the session. Trace the 409 and 422 responses through the client and backend. Open the migration and explain the foreign key. Have the agent propose a domain adaptation, inspect the proposed boundary changes, and implement one small part.
 
 Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
 

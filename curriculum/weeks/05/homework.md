@@ -1,9 +1,9 @@
 # Week 5 Homework: Production Entry: One Working Slice
 
 ## Goal and Starting Point
-Build one complete domain-specific operation on the production starter or your compatible Week 4 app. Avoid a clone-sized feature list: for a library, add a book to a collection; for a marketplace, register a listing; for a content service, save metadata.
+Build one complete domain-specific operation in a new project or your compatible Week 4 app. Avoid a clone-sized feature list: for a library, add a book to a collection; for a marketplace, register a listing; for a content service, save metadata.
 
-Start anew or continue Week 4 work. Use the supplied inventory starter as an executable reference, then choose one approved domain and one narrow user journey. A new stack is not an extra-credit exercise.
+Start anew or continue Week 4 work. Choose one approved domain and one narrow user journey; build anew or adapt an existing repository using AI. A new stack is not an extra-credit exercise.
 
 ## Required Acceptance Evidence
 - A working browser interaction that writes and reads persisted data, with empty/loading/error feedback.

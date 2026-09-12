@@ -36,7 +36,7 @@ A useful test suite and CI gate, an explicit access model, and evidence that an 
 
 # Homework
 
-Strengthen the Week 5 project and make the release access decision. Configure the provided checks for your project, add meaningful failure cases, and demonstrate at least one intentionally incorrect implementation failing a relevant test.
+Strengthen the Week 5 project and make the release access decision. Configure checks appropriate to your project, add meaningful failure cases, and demonstrate at least one intentionally incorrect implementation failing a relevant test.
 5–10 hours. Required criteria and evidence: homework.md.
 
 ---

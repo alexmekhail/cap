@@ -5,7 +5,7 @@ Reproduce the application outside the development machine and make database chan
 
 ## Concepts to Apply
 ### Build and runtime boundaries
-Inspect the multi-stage reference Dockerfile: Node builds static React assets; Python serves the API and assets on the same origin. Dependencies used at build time differ from runtime dependencies. Keep secrets out of layers and inspect the runtime user.
+Inspect a multi-stage Dockerfile in the chosen classroom project: Node builds static React assets; Python serves the API and assets on the same origin. Dependencies used at build time differ from runtime dependencies. Keep secrets out of layers and inspect the runtime user.
 
 ### Database transition and migrations
 Run migrations on PostgreSQL, seed records, and verify constraints and query behavior. SQLite results alone do not establish PostgreSQL behavior. Add a nullable field, upgrade against existing data, and compare IDs and relationships afterward.
@@ -25,4 +25,4 @@ Change the database hostname to an invalid service name in a disposable environm
 Read documentation for the version/service you actually use. These references support the concepts; exact environment setup must be recorded in your repository.
 
 ## Assignment
-[Homework and submission requirements](homework.md). The production reference is [here](../../../infrastructure/template/README.md).
+[Homework and submission requirements](homework.md). Use your own project or the instructor’s chosen classroom example.

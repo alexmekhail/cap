@@ -25,4 +25,4 @@ Do not convert “this run was faster” into “this tool is always better.” 
 Read documentation for the version/service you actually use. These references support the concepts; exact environment setup must be recorded in your repository.
 
 ## Assignment
-[Homework and submission requirements](homework.md). The production reference is [here](../../../infrastructure/template/README.md).
+[Homework and submission requirements](homework.md). Use your own project or the instructor’s chosen classroom example.

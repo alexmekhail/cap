@@ -4,7 +4,7 @@
 A final application demonstration, engineering defense, reproducible portfolio repository, and an actionable job-search preparation plan.
 
 ## Preparation
-Use the [production reference](../../../infrastructure/template/README.md) where applicable, or a disclosed cohort reference with the same behavior. Record the base commit, runtime/tool versions, exact commands, and any account requirements. Prepare a working baseline, a deliberately failing checkpoint, and a verified recovery. Public reference solutions are acceptable when clearly identified.
+Select an existing small application or an instructor-prepared example with the required behavior. The examples below specify what to demonstrate; no application is supplied by this curriculum. Record the base commit, runtime/tool versions, exact commands, and any account requirements. Prepare a working baseline, a deliberately failing checkpoint, and a verified recovery. Public reference solutions are acceptable when clearly identified.
 
 ## Demonstration Sequence (15 minutes)
 - 3m: User/problem and working product journey.
@@ -12,7 +12,7 @@ Use the [production reference](../../../infrastructure/template/README.md) where
 - 4m: Architecture and AI supervision decisions, with evidence.
 - 4m: Known limits, portfolio packaging, and feedback calibration.
 
-Use the inventory reference as a disclosed example; do not imply it meets all student production requirements. The final-session schedule is in `talk-outline.md`.
+Use a disclosed instructor-selected example; do not imply it meets all student production requirements. The final-session schedule is in `talk-outline.md`.
 
 ## Fallback and Honesty
 Use a clearly labeled prepared recording or replay if the live environment fails. Explain the missing dependency and do not describe prerecorded execution as a live agent result. Students still need their own assignment evidence.

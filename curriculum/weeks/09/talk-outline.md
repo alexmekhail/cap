@@ -29,7 +29,7 @@ Review the smallest sufficient change, run relevant regression and integration c
 **Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
 
 ## Instructor Demonstration (45m)
-In a disposable starter copy, introduce a duplicate-write error-handling regression so a duplicate crashes rather than returning the contract response. Show a sanitized trace, state two hypotheses, run a focused failing test, restore correct transaction handling, and independently confirm both the regression and ordinary writes.
+In a disposable copy of the chosen classroom project, introduce a duplicate-write error-handling regression so a duplicate crashes rather than returning the contract response. Show a sanitized trace, state two hypotheses, run a focused failing test, restore correct transaction handling, and independently confirm both the regression and ordinary writes.
 
 Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
 

@@ -10,7 +10,7 @@ Establish checks that expose important failures and define who may perform each 
 ## Shared Teaching Materials
 [Presenter notes](lecture-script.md) · [Slide source](presentation.md) · [Instructor demo](instructor-demo.md)
 
-All materials are shared through GitHub, including references and solutions. Disclose reuse and explain your own contribution. The [production starter](../../../infrastructure/template/README.md) supports the reference exercises; it is not a completed student project.
+All materials are shared through GitHub, including references and solutions. Disclose reuse and explain your own contribution. Classroom application examples must be selected or prepared by the instructor; this curriculum contains teaching materials, not a supplied application.
 
 ## Exit Evidence
 A useful test suite and CI gate, an explicit access model, and evidence that an incorrect implementation is rejected.

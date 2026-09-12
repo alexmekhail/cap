@@ -10,7 +10,7 @@ Reproduce the application outside the development machine and make database chan
 ## Shared Teaching Materials
 [Presenter notes](lecture-script.md) · [Slide source](presentation.md) · [Instructor demo](instructor-demo.md)
 
-All materials are shared through GitHub, including references and solutions. Disclose reuse and explain your own contribution. The [production starter](../../../infrastructure/template/README.md) supports the reference exercises; it is not a completed student project.
+All materials are shared through GitHub, including references and solutions. Disclose reuse and explain your own contribution. Classroom application examples must be selected or prepared by the instructor; this curriculum contains teaching materials, not a supplied application.
 
 ## Exit Evidence
 A containerized app connected to PostgreSQL, with explicit migration steps, data-preservation evidence, and CI image build checks.
