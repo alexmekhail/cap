@@ -4,7 +4,7 @@
 The goal of this program is to take junior engineers and turn them into AI-native, job-market-ready AI native engineers. Everything in the curriculum revolves around this transformation. The fundamental shift in modern software engineering is moving the "Human-in-the-loop" from *writer* to *architect/steer-er*. Modern SWE skill is measured by the ability to **manage the context window** and **recognize AI hallucinations** before they reach production. We are building Sovereign Engineers who direct AI to create production-ready systems, not passive consumers of code.
 
 ## 2. Project Archetypes: The Production-Grade Cloud Application
-Students explore small projects in Weeks 1–2 and an existing codebase in Week 3, then build one capstone from Week 4 through Week 12: an end-to-end "Production-Grade Cloud Application." This architectural pattern is chosen because it is too complex for "one-shot" prompting, forcing students to master architectural boundaries across the stack.
+Students explore in Week 1, build a fresh project in Week 2, modify an existing codebase in Week 3, and tackle an orchestration challenge in Week 4. From Week 5 through Week 12 they develop an end-to-end "Production-Grade Cloud Application." This architectural pattern is chosen because it is too complex for "one-shot" prompting, forcing students to master architectural boundaries across the stack.
 
 **The Application Architecture:**
 *   **Data/Event Ingestion:** Handling user inputs, webhooks, or external API streams.
@@ -39,13 +39,13 @@ Mentorship is strictly high-leverage (architecture, cloud, prompting strategies)
 ## 5. Master Schedule (12 Weeks)
 
 ### Phase 1: Foundations
-*   **W1 | Potential:** Guest Speakers & First Attempt (Practitioners demo real AI-built projects, students try AI coding unguided).
-*   **W2 | Mechanics:** The Engine Room (How LLMs work, prompting patterns, context management, validation loops, workspace setup).
-*   **W3 | Practice:** Working in the Wild (AI-assisted engineering in a large existing OSS codebase — code analysis, PRDs, surgical changes, testing).
-*   **W4 | Harness:** The Flywheel (Agent supervision, API contracts, architecture decisions, relational integrity, migrations, and the first local capstone milestone).
+*   **W1 | Inspiration:** Three nontechnical builders present finished work, workflow evolution, and lessons learned, followed by Q&A. No classroom project; setup and exploration happen at home.
+*   **W2 | Guided Practice:** Build a fresh app in VS Code. Prompt versus context, instruction layers, project instructions, reusable skills, and the human-in-the-loop validation cycle.
+*   **W3 | Sustained Agent:** Terminal workflows with one agent: context discovery, plans, checkpoints, skills, acceptance checks, and on-the-loop supervision. A 30-minute classroom exercise prepares students for substantial Excalidraw homework.
+*   **W4 | Orchestration:** Coordinate agents through script-driven, instruction-driven, and hybrid harnesses. Define roles, connections, ownership, stopping rules, and integration checks; use a harness for an open-ended hard build.
 
 ### Phase 2: Production
-*   **W5 | Integration:** Strengthen the Week 4 capstone API and integrate the provided React/TypeScript frontend scaffold.
+*   **W5 | Production Entry:** Start a new cloud application or carry forward a suitable Week 4 project; establish architecture, data model, migrations, API contracts, and an integrated frontend.
 *   **W6 | Quality:** Engineering Quality (AI-generated tests, linting, security scans).
 *   **W7 | CI/CD:** Infrastructure (Dockerfiles, GitHub Actions).
 *   **W8 | Livesite:** Deployment (GCP deployment, public URL).
@@ -64,3 +64,20 @@ Mentorship is strictly high-leverage (architecture, cloud, prompting strategies)
 *(Note: Guest speakers have been moved to Week 1 to lead with inspiration before instruction).*
 
 **Assessment alignment:** Week 1 uses the field-report rubric; Weeks 2–4 use their published assignment weights, with the shared engineering rubric supplying evidence anchors. Weeks 5–12 use the shared rubric. Credit verified outcomes, architecture decisions, and justified intervention; do not reward app size or penalize iteration count by itself.
+
+## Weeks 1–4: Materials and Delivery
+
+The weekly folders are the source of classroom and assignment materials. Each week has a talk outline, presenter notes, a demo or speaker guide, slide source, student reference, and a separate authoritative homework document. Presenter notes and reference solutions are visible to students; use them openly and disclose reuse in submissions.
+
+| Week | Start here | Homework |
+|---|---|---|
+| 1 | [Inspiration materials](../curriculum/weeks/01/README.md) | [Setup and first attempt](../curriculum/weeks/01/homework.md) |
+| 2 | [Guided practice materials](../curriculum/weeks/02/README.md) | [A fresh application](../curriculum/weeks/02/homework.md) |
+| 3 | [Terminal and sustained-agent materials](../curriculum/weeks/03/README.md) | [Excalidraw feature choice](../curriculum/weeks/03/homework.md) |
+| 4 | [Orchestration materials](../curriculum/weeks/04/README.md) | [An open-ended hard build](../curriculum/weeks/04/homework.md) |
+
+Week 2 introduces project instructions and skills with a small example; Week 3 develops them into tools for maintaining context across sustained work. Week 4 extends supervision to multiple agents. Gas Town is a possible instructor demonstration, not a required student purchase or a finalized course dependency. The instructor brings one working orchestrator setup and contrasts it with three harness designs.
+
+The Week 4 problem need not become the production capstone. At Week 5, students may begin anew or continue if their project fits the production learning objectives. Do not assume a Week 4 Python backend, SQL schema, or migration history.
+
+**Entry and workload:** Students already run projects, use Git branches, read Python/JavaScript, debug basic errors, and know SQL fundamentals. They bring GitHub accounts and their own paid agents supporting VS Code and terminal from day one. All materials are shared in full on GitHub. Plan 5–10 hours of homework per week. Week 1 has a guest-session format; Weeks 2–4 retain the existing three-hour classroom planning envelope, with a 30-minute hands-on exercise in Week 3.

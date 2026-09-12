@@ -1,41 +1,37 @@
-# Instructor Demo: A Check That Catches a Real Failure
+# Week 4 Demo: Three Ways to Coordinate Agents (45m)
 
-## Preparation
-Copy `demo/seed.py`, `demo/test_seed.py`, and `demo/pyproject.toml` into a fresh disposable directory. Keep `instructor_solution.py` outside the agent's workspace. This fixture uses Python's standard library and in-memory SQLite; no API keys or running services are needed. Install Ruff in the demo environment before class and record the Python/Ruff versions used in rehearsal.
+## Before Class
+Bring **one working, rehearsed orchestrator setup** using your existing agent access. Gas Town may be selected after rehearsal, but no named orchestrator is mandatory. Record the exact tool/version, account requirements, invocation commands, and known limits in the demo repository before class. Do not assume a subscription automatically covers every adapter or concurrent run.
 
-Run these commands in the disposable directory:
+Use a small shared task: add color selection and saved tool preferences to a minimal drawing app. Prepare a baseline app and checks, a working result, and an integration-mismatch checkpoint. Keep all references in GitHub and disclose prepared results. The course does not yet pin a specific orchestrator or provider adapter; these are instructor preparation requirements.
 
-```sh
-python3 -m unittest -v
-ruff check .
-```
+## 1. Frame the Roles (5m)
+Show the running orchestrator and define a UI worker, persistence worker, and integrator/reviewer. Agree the preference schema first. Assign non-overlapping files. Explain why both workers must use the same contract.
 
-The starter intentionally fails the acceptance suite. The tests exercise requested row counts, uniqueness, repeatable seeding, and invalid input. The lint configuration is supplied, rather than merely mentioned in the narration.
-
-## 1. Establish the Contract
-Read `test_seed.py` with students. Predict the failures before running it. Explain why a count check alone would not establish safe repeatability or input handling.
-
-Create the chosen agent's instruction file or explicitly supply these instructions:
+## 2. Script-driven Harness (12m)
+Ask AI to create a few simple Python scripts connected through files or JSON:
 
 ```text
-Implement seed_users(connection, count) against the supplied acceptance tests.
-Use Python standard library and SQLite. Modify only seed.py.
-Do not change acceptance tests or lint configuration.
-Run python3 -m unittest -v and ruff check . after changes.
-Stop after three unsuccessful correction attempts and summarize the evidence.
-Stop and ask before changing scope or adding dependencies.
+Generate a small coordinator with plan.py, dispatch.py, verify.py, and report.py.
+Use an explicit task JSON schema, dependency IDs, owned paths, and output artifacts.
+Dispatch through the existing agent adapter I supply; do not invent its API.
+Use subprocess argument arrays, checked exit codes, per-task timeouts, and bounded retries.
+Stop if a worker output is missing, invalid, or contradicts the agreed interface.
+Do not execute generated code until I have inspected it.
 ```
 
-## 2. Observe the Baseline
-Run the tests and explain the actual failures. Show that the starter inserts one user regardless of the requested count. The repeat run also violates the unique constraint. These are deliberate fixture defects, not predictions about what an AI will do.
+Inspect the generated code and connect it to the rehearsed adapter. Run a bounded task through the stages and show an artifact moving between them. Explain the difference between a real agent invocation and a deterministic replay used as fallback.
 
-## 3. Supervise Recovery
-Ask the agent to fix the implementation under the supplied contract. Observe its real actions. Let it correct failures within the agreed scope; intervene if it weakens tests or expands scope. If it succeeds immediately, review why the checks are useful without inventing extra iterations.
+## 3. Instruction-driven Harness (10m)
+Use the same app, role contracts, and checks with the playbook in `reference.md`. Ask the orchestrator to plan, assign, require evidence, and integrate according to that document. Show which decisions moved from Python into instructions. Verify actual execution; a narrative saying “the reviewer approved” is not evidence that review ran.
 
-## 4. Review the Result
-Re-run both commands yourself and inspect the diff. Check parameterized SQL, input validation before writes, unique values, and repeatable seeding. As a demonstration of the checks' sensitivity, substitute the original starter in the disposable directory and show the tests fail again; restore the reviewed implementation afterward.
+## 4. Hybrid Harness (12m)
+Keep a supervisor agent responsible for the goal. Ask it to generate a small helper that dispatches ready tasks and collects reports, using the same known adapter. Review and run that helper. Return results to the supervisor for the next decision; do not let the helper silently redefine the task or acceptance tests.
 
-If the live agent or environment fails, use the instructor reference as a clearly labeled fallback and run the same checks. Do not present it as live-generated work.
+Introduce a prepared schema mismatch, such as one worker returning `colour` where the agreed interface uses `color`. Show the integration check rejecting it and the supervisor routing a correction. If demonstrated through replay, label it clearly.
 
-## Transfer to the Capstone
-This short fixture teaches the control loop, not the full application. Students apply it to FastAPI/SQLAlchemy, API failure cases, relational integrity, and Alembic migrations. Add API and migration checks before delegating those parts. Set budgets and review boundaries; instructions alone do not enforce them.
+## 5. Compare and Debrief (6m)
+Where was control located? What was mechanically enforced? What depended on instructions? Which evidence justified acceptance? When would one agent have been simpler? Point students to the open-ended homework: use a harness, demonstrate coordination, and defend the integrated result.
+
+## Fallback
+Show the published checkpoints and artifact flow if live tooling fails. Never imply a replay was live agent work. Students may adapt the provided setup, but their submissions must show their own execution and verification evidence.

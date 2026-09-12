@@ -5,7 +5,7 @@
 - **Dockerizing with AI:** How to safely generate `Dockerfile` and `docker-compose.yml`.
 - **The CI/CD Pipeline:** Prompting for GitHub Actions workflows.
 - **AI Security Threats:** Understanding how AI often hallucinates insecure defaults (e.g., exposing internal ports, omitting CSRF tokens) and how to explicitly prompt for secure configurations.
-- **Persistence transition:** Apply the Week 4 migrations to an empty PostgreSQL database, seed it, and test constraints and query behavior. Document dialect differences; verify record counts and key relationships if transferring existing SQLite records.
+- **Persistence transition:** Apply the Week 5 migrations to an empty PostgreSQL database, seed it, and test constraints and query behavior. Document dialect differences; verify record counts and key relationships if transferring existing SQLite records.
 - **Environment Parity:** Ensuring the AI understands the difference between local dev and production builds.
 
 ## Lab Instructions: Containerization

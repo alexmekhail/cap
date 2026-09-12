@@ -1,27 +1,23 @@
-# Week 3: Local Comments Reference Brief
+# Excalidraw Comments Track: Reference Brief
 
-This is the fixed assignment specification. No commercial-product access is needed.
+This brief supports [Week 3 homework](homework.md). It replaces the earlier one-comment exercise with a substantial review workflow. No commercial-product access is required.
 
 ## User Story
-As someone reviewing a drawing, I can leave a note at a canvas location and return to read it after reloading that drawing.
+A reviewer selects elements in a drawing, leaves a comment, and returns to the thread later without losing the relationship to those elements.
 
-## Core Interaction
-1. Choose an explicit **Add comment** action (a toolbar button or context-menu item).
-2. Click a canvas location, enter non-empty text, and save. Cancel creates nothing.
-3. A clearly distinguishable pin marks the saved scene location.
-4. Select the pin to open a text panel. Closing the panel leaves the pin in place.
-5. Pan and zoom: the pin follows the scene location, not a fixed screen pixel.
-6. Reload the same drawing: the pin and text return. Open a different drawing: the note does not appear there.
+## Core Acceptance Criteria
+1. Select one or more drawing elements, choose an explicit comment action, enter non-empty text, and save. Cancel creates nothing.
+2. Display an identifiable thread pin and a panel containing its text. Selecting a thread reveals/highlights the associated elements; selecting the pin opens that thread.
+3. Add a reply, resolve a thread, and reopen it from a resolved-thread view.
+4. Keep the pin associated with the selection during pan/zoom and element movement. Define a deterministic anchor rule for multi-element selections.
+5. Define deletion behavior: for example, retain an orphaned thread with a clear label rather than silently attaching it to an unrelated element.
+6. Reload the drawing and recover its comments. Switching drawings must not mix comment state.
 
-One comment is enough for the core assignment. If replacing an existing comment is supported, ask for confirmation or provide an explicit edit action. Use keyboard-accessible controls with labels and visible focus; do not block ordinary drawing interactions outside comment mode.
+## Architectural Decisions to Defend
+Inspect the project's current patterns before choosing state ownership, storage, and rendering. Explain whether comments belong in drawing elements or separate state; do not assume a universal answer. Define drawing identity, element references, serialization, and behavior when referenced elements disappear. Render user text as text, reject blank input, and recover from malformed stored data without crashing the drawing.
 
-## Data and Architecture
-Store text and scene coordinates in comment state separate from drawing elements. Explain how drawing identity is assigned and how local storage is keyed to it. Define behavior when no saved drawing identity exists. Render comment text as text. Reject empty or whitespace-only input and handle missing or malformed stored data without crashing the drawing.
-
-## Acceptance Evidence
-- Automated checks: scene/screen coordinate round trip at non-default pan and zoom; persistence round trip; isolation between drawing IDs; malformed stored data.
-- Manual checks: create, cancel, select, close, pan, zoom, reload, switch drawings, and continue drawing normally.
-- Record baseline and final relevant upstream test results. Separate pre-existing failures from regressions introduced by the change.
+## Validation Evidence
+Automated checks for comment association, replies and resolution state, persistence isolation, and missing-element handling. Test coordinate conversion where your implementation introduces it. Manual demo: select elements, comment, reply, pan, zoom, move elements, resolve/reopen, reload, and switch drawings. Confirm normal selection/drawing behavior still works.
 
 ## Extensions
-Replies, reactions, resolved threads, multiple comments, element anchoring, and export/import are optional. Local persistence is the core contract; collaboration and remote synchronization are out of scope.
+Reactions, keyboard shortcuts, search, and import/export. Remote collaboration is outside the required core. Explain limitations instead of implying local persistence is multi-user synchronization.

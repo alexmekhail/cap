@@ -1,19 +1,22 @@
-# Week 5: Capstone API & Frontend Integration
+# Week 5: Production Project Entry — Architecture, API & Frontend
 
 ## Entry Point
-Continue the Week 4 FastAPI/SQLAlchemy capstone with its ADR, API contract, migrations, seed data, tests, and simple local UI. Resolve an incomplete core API-to-database slice before adding new UI scope. The instructor supplies and rehearses a minimal React/TypeScript scaffold before class; students place it in `/src/frontend`.
+Choose an approved domain from the master curriculum. Start a new repository or adapt Week 4 work if it fits the production objectives. Do not assume the previous app has a Python backend, database, or migration history. Review prior evidence to identify gaps in verification and supervision.
+
+The instructor supplies a rehearsed minimal FastAPI/SQLAlchemy/Alembic and React/TypeScript starter before class, with setup/run/check commands. Use it to reach one coherent slice within the 5–10 hour homework budget; adapting a starter is allowed when students explain it.
 
 ## Technical Deep Dive (75m)
-- **Contract review (25m):** Strengthen Pydantic request/response validation, documented errors, and separation between routes and business logic. Update the Week 4 OpenAPI contract rather than inventing a competing API.
-- **External integrations (20m):** Handle timeout and upstream failure paths with an HTTP client; bound retries and avoid automatically repeating non-idempotent writes.
-- **Frontend integration (30m):** Connect the provided React/TypeScript UI to the contract, including loading, empty, success, and error states. Keep credentials on the backend.
+- **Architecture and data (25m):** Define UI → API → business logic → database boundaries. Write an ADR comparing a simple stateful app with batch/event-driven alternatives. Design keys, relationships, uniqueness, deletion behavior, and an index tied to a real query. Establish initial migrations and demonstrate a schema change preserving seeded records.
+- **API contract (25m):** Define request/response validation and failure behavior. Separate routes from business logic. Bound retries and use deterministic fixtures for external integrations.
+- **Frontend integration (25m):** Connect the provided React/TypeScript UI to one complete API workflow, including loading, empty, success, and error states. Keep credentials on the backend.
 
-## Lab: Extend the Existing Slice
-1. Review the W4 contract against the working API and document one correction.
-2. Add or strengthen an external data integration appropriate to the domain, using a deterministic fixture for tests.
-3. Integrate the provided frontend with one complete workflow. Reuse existing functionality; replacing the simple W4 UI is expected.
-4. Run backend and frontend checks; demonstrate a successful request, invalid input, and an upstream timeout/failure.
-5. Record the architectural decision, checks, and interventions in `docs/prompt-logs/week-05.md`.
+## Lab and Independent Work
+1. Decide whether to start anew or continue, and record the reason.
+2. Establish the ADR, API contract, schema, and reproducible run/check commands.
+3. Build one narrow UI-to-API-to-database workflow with SQLite, SQLAlchemy, and Alembic.
+4. Demonstrate the initial migration and a data-preserving schema change. Check constraints and one failure case.
+5. Integrate an external data source where appropriate to the domain; isolate it behind a test fixture.
+6. Record checks, architectural decisions, and interventions in `docs/prompt-logs/week-05.md`.
 
 ## Deliverable
-A PR in the continuing capstone repository with the integrated UI, updated contract, tests, and evidence of success and failure behavior. Keep SQLite for this milestone. Week 6 strengthens quality gates; Week 7 adds PostgreSQL and containers; Week 8 deploys.
+A PR with a working slice, integrated UI, ADR, contract, schema/migrations, tests, and evidence for success and failure behavior. This is the production project retained through Week 12. Week 6 strengthens quality gates; Week 7 validates PostgreSQL and adds containers; Week 8 deploys.

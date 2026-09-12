@@ -1,15 +1,30 @@
-# Instructor Demo: Week 3 Codebase Navigation
+# Week 3 Demo: One Terminal Agent, Verified Checkpoints
 
-Use Lobe Chat as a separate instructor example so students must transfer the method to Excalidraw. Before class, record a tested checkout, setup commands, and baseline test results. Rehearse a small, bounded change in that checkout; do not depend on an unverified file path or a spontaneous large feature build.
+## Preparation
+Copy `demo/seed.py`, `demo/test_seed.py`, and `demo/pyproject.toml` to a disposable repository. Python and in-memory SQLite suffice for the tests; install Ruff in the chosen demo environment before class. The public `demo/instructor_solution.py` is a disclosed reference, not the exercise output. Record tool versions and rehearse commands before teaching.
 
-## 1. Map Before Editing
-Ask the agent to locate session schema and state ownership, citing files and symbols. Open the sources and verify the claims. Discuss one incorrect or incomplete inference if it occurs; do not script a guaranteed hallucination.
+```sh
+python3 -m unittest -v
+ruff check .
+```
 
-## 2. Write a Bounded PRD
-Choose one small metadata or validation change confirmed feasible during rehearsal. Define observable acceptance criteria, affected layers, and a test that would fail without the change. Keep the baseline and acceptance check ready as a fallback if setup fails live.
+The starter intentionally inserts only one row and mishandles repeat/invalid requests. Four acceptance checks expose row count, uniqueness, idempotence, and invalid-input behavior. Keep a baseline commit, a verified reference checkpoint, and screenshots/recording as fallback.
 
-## 3. Implement and Validate
-Work through the relevant layers in dependency order. Inspect each diff, run the documented checks, and compare against the baseline. Investigate failures rather than assuming their cause. Explain why you intervene or allow the agent to continue.
+## Instructor Demonstration (45m)
+1. **Baseline (5m):** Run checks and inspect the failures before invoking the terminal agent.
+2. **Context and skill (10m):** Reuse Week 2's validation procedure, add a repository map, and write the current task contract.
+3. **Supervised execution (15m):** Ask one agent to implement `seed_users(connection, count)`, modifying only `seed.py`, retaining tests and lint settings, and running checks after changes. Stop after three unsuccessful corrections or ten minutes and report evidence. Observe actual behavior rather than scripting a hallucination.
+4. **Checkpoint/resume (10m):** Have it write completed work, changed files, checks/results, unresolved issues, and next action. Resume from that brief. Explain how this pattern supports a larger work session; show a clearly labeled prepared longer-task checkpoint if available.
+5. **Independent review (5m):** Run checks yourself, inspect the diff, and discuss when intervention was justified. Demonstrate that substituting the starter makes the tests fail again.
 
-## 4. Transfer to the Assignment
-Students use the same mapping, PRD, and validation process for the local comments brief. Their first checkpoint is one scene-anchored pin; persistence follows. Emphasize that a small, verified change is sufficient evidence of engineering skill.
+## Student Hands-on (30m)
+- 0–5m: copy fixture, create branch, and capture baseline.
+- 5–10m: write instructions, acceptance criteria, and limits.
+- 10–20m: supervise one terminal agent fixing the implementation.
+- 20–25m: write and use a checkpoint/resume brief.
+- 25–30m: independently run checks and explain one decision to a peer.
+
+If tooling is unavailable, students inspect the disclosed reference and compare it to the failing starter, recording that fallback honestly. This does not replace the sustained-agent evidence required in homework.
+
+## Transfer
+Excalidraw homework adds context discovery across a large repository and a substantial feature. The classroom fixture demonstrates the control loop; it is deliberately much smaller than that assignment.

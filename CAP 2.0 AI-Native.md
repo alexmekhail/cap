@@ -3,7 +3,7 @@
 ## **Overview & Educational Vision**
 The goal of this program is to take junior engineers and transform them into job-market-ready **AI Native Engineers**.
 
-The fundamental shift in modern software engineering is moving the "Human-in-the-loop" from being a *writer* of code to an *architect and steer-er* of AI systems. Modern engineering skill is no longer just syntax memorization; it is measured by the ability to **manage the context window**, strictly enforce API contracts, and **recognize AI hallucinations** before they reach production.
+Students learn when to work **in the loop**, reviewing each step, and when to work **on the loop**, defining goals and checks while supervising execution at checkpoints. Both modes require engineering judgment. Modern engineering skill is no longer just syntax memorization; it is measured by the ability to **manage the context window**, strictly enforce API contracts, and **recognize AI hallucinations** before they reach production.
 
 This residency does not teach students how to be passive consumers of AI. It trains them to be Sovereign Engineers who command AI to build reliable, production-grade systems.
 
@@ -13,16 +13,18 @@ This residency does not teach students how to be passive consumers of AI. It tra
 
 | Parameter | Description |
 | :---- | :---- |
-| **Entry Prerequisites** | Students must enter with basic programming logic (Python/JS), SQL fundamentals, and Git basics. This is not a "learn to code" bootcamp; it is a residency to master architectural AI steering. |
+| **Entry Prerequisites** | Students can already run a project, use Git branches, read Python/JavaScript, debug a basic error, and apply SQL fundamentals. This is not a "learn to code" bootcamp; it is a residency to master architectural AI steering. |
 | **Duration** | 12 weeks total, structured progressively from Foundations to Mastery. |
-| **Format** | Weekly core instruction paired with a long-running, complex take-home project. |
+| **Format** | Weekly instruction plus 5–10 hours of serious independent work. Weeks 1–4 ramp from setup to sustained and coordinated agent work; the production project begins or continues in Week 5. |
+| **Day-one access** | Bring a GitHub account and your own paid AI subscription or agent plan with both VS Code integration and terminal support. Verify access in both environments; separate usage limits or billing may apply. |
+| **Distribution** | All course materials, presenter notes, demos, references, and solutions are shared in full through GitHub. Students create repositories or fork existing ones and submit repository/PR links. |
 | **Mentorship** | High-leverage coaching capped at 30-60 mins per mentee weekly. Mentors focus on architecture and AI steering, not syntax debugging. |
 | **The "2-Hour Hatch"** | Students must attempt to unblock themselves via AI for 2 hours, documenting their prompt strategy in a structured log, before requesting human mentor intervention. |
 
 ---
 
 ## **The Project: The Production-Grade Cloud Application**
-To prevent students from relying on simple "one-shot" prompts, the residency develops an end-to-end **Production-Grade Cloud Application** from Week 4 through Week 12, following exploratory work in Weeks 1–3. This architecture is deliberately complex, forcing students to master architectural boundaries across the stack.
+To prevent students from relying on simple "one-shot" prompts, the residency develops an end-to-end **Production-Grade Cloud Application** from Week 5 through Week 12, following progressive AI engineering assignments in Weeks 1–4. This architecture is deliberately complex, forcing students to master architectural boundaries across the stack.
 
 **The Application Architecture:**
 1.  **Data/Event Ingestion:** Handling user inputs, webhooks, or external API streams.
@@ -50,7 +52,7 @@ Students work out of a unified repository environment that automatically enforce
 ---
 
 ## **AI-Augmented Mentorship & Evaluation**
-Mentors do not grade on whether the code compiles. To protect mentor capacity (limiting their involvement to 5-10 minutes per PR), we use a highly automated **"LLM-as-a-Judge"** pipeline.
+Mentors evaluate working demonstrations, engineering decisions, and verification evidence; compilation alone is insufficient. To protect mentor capacity (limiting their involvement to 5-10 minutes per PR), we use a highly automated **"LLM-as-a-Judge"** pipeline.
 
 **Automation Breakdown (80% AI / 20% Manual):**
 *   **AI Auto-Grader:** A GitHub Action automatically parses the student's PR diff and mandatory **Prompt Logs**. It proposes evidence-backed, provisional 1-5 scores for mentor review in:
@@ -66,14 +68,14 @@ Mentors do not grade on whether the code compiles. To protect mentor capacity (l
 
 ### **Phase 1: Foundations (Weeks 1-4)**
 *Focus: Establishing the baseline for AI collaboration, context management, and practical engineering skills.*
-*   **W1 | Potential:** Guest Speakers & First Attempt (Practitioners demo real AI-built projects, students try AI coding unguided).
-*   **W2 | Mechanics:** The Engine Room (How LLMs work technically, prompting patterns, context management, validation loops, workspace setup).
-*   **W3 | Practice:** Working in the Wild (AI-assisted engineering in a large existing OSS codebase — code analysis, PRDs, surgical changes, testing).
-*   **W4 | Harness:** The Flywheel (Agent supervision, API contracts, architecture decisions, relational integrity, migrations, and the first local capstone milestone).
+*   **W1 | Inspiration:** Three nontechnical builders present finished work, workflow evolution, and lessons learned, followed by Q&A. No classroom project; setup and exploration happen at home.
+*   **W2 | Guided Practice:** Build a fresh app in VS Code. Prompt versus context, instruction layers, project instructions, reusable skills, and the human-in-the-loop validation cycle.
+*   **W3 | Sustained Agent:** Terminal workflows with one agent: context discovery, plans, checkpoints, skills, acceptance checks, and on-the-loop supervision. A 30-minute classroom exercise prepares students for substantial Excalidraw homework.
+*   **W4 | Orchestration:** Coordinate agents through script-driven, instruction-driven, and hybrid harnesses. Define roles, connections, ownership, stopping rules, and integration checks; use a harness for an open-ended hard build.
 
 ### **Phase 2: Production (Weeks 5-8)**
 *Focus: Building, testing, and deploying the core cloud application to ensure functional skills are gained.*
-*   **W5 | Integration:** Strengthen the Week 4 capstone API and integrate the provided React/TypeScript frontend scaffold.
+*   **W5 | Production Entry:** Start a new cloud application or carry forward a suitable Week 4 project; establish architecture, data model, migrations, API contracts, and an integrated frontend.
 *   **W6 | Quality:** Engineering Quality (Pytest fixtures for 429/422 errors, coverage enforcement, security scans via `bandit`).
 *   **W7 | CI/CD:** Infrastructure (Optimized multi-stage Dockerfiles, `docker-compose` networking, GitHub Actions).
 *   **W8 | Livesite:** Deployment (Vercel frontend, GCP Cloud Run/AWS App Runner, strict IAM permission reviews, Cloud Cost Budgets).
@@ -86,3 +88,18 @@ Mentors do not grade on whether the code compiles. To protect mentor capacity (l
 *   **W12 | Demos:** Project Demos & Workflow Sharing. Students present their live end-to-end pipelines and a "Prompt Case Study" showing Before/After code.
 
 **Assessment alignment:** Week 1 uses the field-report rubric; Weeks 2–4 use their published assignment weights, with the shared engineering rubric supplying evidence anchors. Weeks 5–12 use the shared rubric. Credit verified outcomes, architecture decisions, and justified intervention; do not reward app size or penalize iteration count by itself.
+
+## Weeks 1–4: Materials and Delivery
+
+The weekly folders are the source of classroom and assignment materials. Each week has a talk outline, presenter notes, a demo or speaker guide, slide source, student reference, and a separate authoritative homework document. Presenter notes and reference solutions are visible to students; use them openly and disclose reuse in submissions.
+
+| Week | Start here | Homework |
+|---|---|---|
+| 1 | [Inspiration materials](curriculum/weeks/01/README.md) | [Setup and first attempt](curriculum/weeks/01/homework.md) |
+| 2 | [Guided practice materials](curriculum/weeks/02/README.md) | [A fresh application](curriculum/weeks/02/homework.md) |
+| 3 | [Terminal and sustained-agent materials](curriculum/weeks/03/README.md) | [Excalidraw feature choice](curriculum/weeks/03/homework.md) |
+| 4 | [Orchestration materials](curriculum/weeks/04/README.md) | [An open-ended hard build](curriculum/weeks/04/homework.md) |
+
+Week 2 introduces project instructions and skills with a small example; Week 3 develops them into tools for maintaining context across sustained work. Week 4 extends supervision to multiple agents. Gas Town is a possible instructor demonstration, not a required student purchase or a finalized course dependency. The instructor brings one working orchestrator setup and contrasts it with three harness designs.
+
+The Week 4 problem need not become the production capstone. At Week 5, students may begin anew or continue if their project fits the production learning objectives. Do not assume a Week 4 Python backend, SQL schema, or migration history.
