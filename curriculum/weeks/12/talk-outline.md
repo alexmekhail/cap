@@ -16,34 +16,20 @@ Use the teaching topics below during pre-demo rehearsal, not as a 75-minute lect
 ### 1. Tell the product story (use during rehearsal)
 Explain the user, problem, and core workflow before tools and architecture. Show the running application, then one failure/edge case and its handling. Use a clearly labeled recording if live connectivity fails.
 
-**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
-
 ### 2. Show engineering evidence (use during rehearsal)
 Present one architecture decision, one meaningful failure caught, and one supervision/orchestration decision. Distinguish local tests, hosted behavior, and unverified claims. Explain reused code and remaining limitations.
-
-**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
 
 ### 3. Prepare for the next opportunity (use during rehearsal)
 Make the README reproducible, link the demo and case study, and write accurate project bullets. Identify target role skills to practice next. Completion supports a portfolio; it does not guarantee employment.
 
-**Check for understanding:** Ask a student to apply this idea to their own project and identify the evidence that would support the decision.
-
-## Instructor Demonstration (15m)
-The instructor gives a short example presentation using an instructor-selected application: a complete user workflow, a duplicate-write check, architecture boundaries, and an explicit limitation. Then show an unsupported claim and rewrite it using evidence. Publish the demo order and feedback format before class.
-
-Use [instructor-demo.md](instructor-demo.md) for preparation, checkpoints, and fallback. Ask students to predict the outcome before running the check, then reconcile their prediction with the evidence.
+## Instructor Demonstration Plan (15m)
+The instructor gives a short example presentation using an instructor-selected application: a complete user workflow, a duplicate-write check, architecture boundaries, and an explicit limitation. Allow 3m for the product journey, 4m for a failure and its check, 4m for architecture and supervision decisions, and 4m for limits and feedback. Publish the demo order and feedback format before class.
 
 ## Student Presentations (140m)
-Use the cohort presentation format below. Peers give feedback as one supported strength, one evidence gap, and one next action; the instructor records unresolved core criteria.
+Use the ten-minute presentation slots in the session plan. Peers give feedback as one supported strength, one evidence gap, and one next action; the instructor records unresolved core criteria.
 
 ## Misconception to Address
 Do not label a project production-ready solely because it is deployed or has a green coverage badge. Say exactly what was verified, at what scale, and what remains outside the evidence.
 
-## Close the Session
-Have students name one decision, the evidence supporting it, and the next missing check. Confirm they can find the homework and know what to submit. Do not equate partially demonstrated behavior with a completed milestone.
-
 ## Connection to the Next Stage
 Students leave with a portfolio package and a practice plan; mentors identify remaining gaps rather than treating a graduation demo as proof of every skill.
-
-## Materials
-[Presenter notes](lecture-script.md) · [Slides](presentation.md) · [Student reference](reference.md) · [Homework](homework.md)

@@ -19,27 +19,15 @@ Bring the Week 5 slice, contract, migrations, and a working local check command.
 - Independent checks and repair: 1–2h.
 - Demonstration, reflection, and submission: 1–2h.
 
-At the end of the budget, report required criteria as met, partial, or unmet with links. Incomplete work earns credit for demonstrated criteria, but it is not labeled complete. Resolve a broken core before optional extensions. Ask for targeted help with a concise diagnosis rather than spending the entire week repeating the same failed attempt.
+Report each required criterion as met, partial, or unmet with evidence. Prioritize broken core behavior before optional extensions.
 
 ## Submission
 Submit the PR, CI run URL, access-policy note, test results, one deliberate failure demonstration, and `docs/prompt-logs/week-06.md`. Do not claim a scan proves complete security.
 
-Use the [shared evidence-log template](../../../infrastructure/template/docs/prompt-logs/TEMPLATE.md). Push to your own repository and share the PR/repository link before the next session (Week 12: by the final presentation). All course references are visible; disclose reuse and explain your contribution. A PR to an upstream open-source project is not required.
+Use the [shared evidence-log template](../../../infrastructure/template/docs/prompt-logs/TEMPLATE.md). Share the PR/repository link to your own repository before the next session. Disclose reused material and explain your contribution.
 
 ## Assessment
-Use the [shared engineering rubric](../../../tools/agentic-mentor/evaluation-rubric.md), four equally weighted dimensions:
-
-| Dimension | Weight | Evidence in this assignment |
-|---|---|---|
-| Context management | 25% | Correct baseline, relevant information, and explicit constraints |
-| Validation and correction | 25% | Meaningful checks, diagnosis, and justified intervention |
-| Structural oversight | 25% | Defensible boundaries, tradeoffs, and controlled changes |
-| System integrity | 25% | Required behavior works, failure cases are checked, limits are honest |
-
-Missing evidence keeps the affected criterion provisional. Do not award points simply for prompt count, code volume, number of agents, or unsupported claims of speed/security.
-
-## Completion Check
-Could a reviewer reproduce your main claim from the submitted instructions and evidence? State any tool, account, or environment dependency that prevents reproduction.
+The [shared engineering rubric](../../../tools/agentic-mentor/evaluation-rubric.md) applies: context management, validation and correction, structural oversight, and system integrity, each worth 25%. Assess these against the required evidence above; missing evidence keeps the affected score provisional.
 
 ## Next
 Week 7 transports the tested app into containers and verifies its database behavior on PostgreSQL.

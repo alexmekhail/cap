@@ -17,7 +17,7 @@ This residency does not teach students how to be passive consumers of AI. It tra
 | **Duration** | 12 weeks total, structured progressively from Foundations to Mastery. |
 | **Format** | Weekly instruction plus 5–10 hours of serious independent work. Weeks 1–4 ramp from setup to sustained and coordinated agent work; the production project begins or continues in Week 5. |
 | **Day-one access** | Bring a GitHub account and your own paid AI subscription or agent plan with both VS Code integration and terminal support. Verify access in both environments; separate usage limits or billing may apply. |
-| **Distribution** | All course materials, presenter notes, demos, references, and solutions are shared in full through GitHub. Students create repositories or fork existing ones and submit repository/PR links. |
+| **Distribution** | Course materials are shared in full through GitHub, including instructor guidance and any teaching solutions. Students create repositories or fork existing ones and submit repository/PR links. |
 | **Mentorship** | High-leverage coaching capped at 30-60 mins per mentee weekly. Mentors focus on architecture and AI steering, not syntax debugging. |
 | **The "2-Hour Hatch"** | Use structured self-help: change approach after about 45 minutes, inspect evidence directly by 90 minutes, and seek targeted mentor help by two hours. Escalate access, data-loss, security, or spending blockers immediately; do not repeat failed agent runs to satisfy a timer. |
 
@@ -87,7 +87,7 @@ Use the shared dimensions: context management, validation/correction, structural
 
 ## Weekly Materials and Delivery
 
-The weekly folders are the source of classroom and assignment materials. Each week has a talk outline, presenter notes, a demo or speaker guide, slide source, student reference, and a separate authoritative homework document. Presenter notes and reference solutions are visible to students; use them openly and disclose reuse in submissions.
+Each weekly folder links to its talk outline and homework. The outline contains the agenda, teaching prompts, and demonstration plans. Weeks 2–4 also include reusable reference procedures; Week 3 includes a seed-data exercise and an Excalidraw comments brief. All materials are visible to students; disclose reuse in submissions.
 
 | Week | Start here | Homework |
 |---|---|---|

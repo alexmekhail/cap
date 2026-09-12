@@ -4,5 +4,3 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .coverage
-curriculum/weeks/04/demo/plan.json
-curriculum/weeks/04/demo/results.json

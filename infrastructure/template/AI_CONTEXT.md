@@ -8,7 +8,7 @@ As an engineer in CAP 2.0, you are not writing code from scratch; you are steeri
 3.  **Verification First:** Do not merge AI code that lacks tests. Run the configured checks and inspect meaningful behavior; enable branch protection in your own repository if these checks must block merging.
 
 ## Project: Production-Grade Cloud Application
-This repository will house your 12-week project.
+Adapt this template in the student application repository. The production project begins in Week 5; earlier assignments may use separate repositories.
 - `/src`: Backend Python logic and Frontend UI.
 - `/tests`: Verification suites.
 - `/infrastructure`: Dockerfiles and CI/CD.

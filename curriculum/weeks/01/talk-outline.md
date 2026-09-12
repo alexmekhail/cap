@@ -44,7 +44,7 @@ All material is on GitHub. Students bring their own GitHub account and paid agen
 
 ## 2. Three Builder Showcases (25m Each)
 
-Give each guest the [speaker brief](instructor-demo.md) in advance. A useful allocation within each slot is:
+Brief each guest on the following structure in advance:
 - **Problem and finished work (8m):** Show a complete user journey and explain why they wanted the product.
 - **How they built it (7m):** Walk through the tools, requests, files, or other information they used and the steps they handled themselves.
 - **How their method evolved (7m):** Compare an early approach with their current one. Show a specific failure, the change they made, and the result.
@@ -88,11 +88,7 @@ Point students to [homework.md](homework.md). They will verify their setup, crea
 Have students check that they know where the assignment is on GitHub and what link they must submit. Capture access blockers for follow-up rather than turning the close into a full installation tutorial.
 
 ## Preparation and Follow-through
-- Collect the three guest presentations and demo fallbacks; confirm what can be shared in the course repository.
+- Ask each guest to prepare a product walkthrough and screenshots or a recording as fallback. Confirm permission to share their material on GitHub and remove private data or credentials before publishing.
 - Review the guests' examples beforehand so introductions and comparison questions refer to their real work.
-- Keep the [student reference](reference.md) and [homework](homework.md) easy to find from the weekly README.
 - After class, add shareable guest materials to this week's GitHub folder and record unanswered questions.
 - Before Week 2, review field reports and select a few examples that will make prompting, context, and validation instruction concrete.
-
-## Supporting Materials
-[Speaker/session guide](instructor-demo.md) · [Presenter notes](lecture-script.md) · [Slides](presentation.md) · [Student reference](reference.md) · [Homework and assessment](homework.md)
