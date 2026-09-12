@@ -81,3 +81,15 @@ Week 2 introduces project instructions and skills with a small example; Week 3 d
 The Week 4 problem need not become the production capstone. At Week 5, students may begin anew or continue if their project fits the production learning objectives. Do not assume a Week 4 Python backend, SQL schema, or migration history.
 
 **Entry and workload:** Students already run projects, use Git branches, read Python/JavaScript, debug basic errors, and know SQL fundamentals. They bring GitHub accounts and their own paid agents supporting VS Code and terminal from day one. All materials are shared in full on GitHub. Plan 5–10 hours of homework per week. Week 1 has a guest-session format; Weeks 2–4 retain the existing three-hour classroom planning envelope, with a 30-minute hands-on exercise in Week 3.
+
+## Curriculum Ownership and Maintenance
+
+Codex owns curriculum development and consistency across all 12 weeks: learning progression, technical accuracy, instructional pacing, presenter guidance, demos, student references, homework, assessment, and transitions into the production project and job preparation. The instructor sets direction through feedback; routine instructional and implementation decisions should be resolved without returning them as questions.
+
+Maintain the existing repository structure. The root curriculum overview defines the program; this plan records delivery decisions; weekly folders contain the teaching and student materials. Homework documents are the authoritative assignment specifications. Keep schedules, outlines, notes, slides, references, and grading aligned whenever a decision changes.
+
+For each week, check that students have been taught the prerequisites for the assignment, the work fits the 5–10 hour budget, the instructor has an actionable session guide, and assessment rewards demonstrable engineering understanding. Preserve the agreed progression through inspiration, guided practice, sustained single-agent work, and orchestration before production engineering. Do not equate autonomous execution with verified correctness.
+
+Distinguish written demo plans from runnable, rehearsed demonstrations. Validate what can be checked locally and state remaining tool/account-dependent preparation precisely. All material is shared through GitHub; reference reuse must be disclosed rather than prevented through hidden materials.
+
+Commit and push completed, verified revisions on the existing feature branch. Do not merge without the instructor's explicit authorization. Do not create separate planning documents that duplicate this structure. Ownership does not imply background work or scheduled runs; continue the curriculum work in active sessions and report outcomes and material limitations.
