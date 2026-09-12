@@ -5,14 +5,14 @@ As an engineer in CAP 2.0, you are not writing code from scratch; you are steeri
 
 1.  **Prompt Privacy:** NEVER send proprietary data, PII, or internal credentials to an external LLM. Redact all secrets before prompting.
 2.  **The Prompt Log:** You must maintain a log of your prompts in `docs/prompt-logs/`. This is how mentors evaluate your Context Management and Iterative Correction skills.
-3.  **Verification First:** Do not merge AI code that lacks tests. The Automated Agentic Linter will reject PRs that lower test coverage.
+3.  **Verification First:** Do not merge AI code that lacks tests. Run the configured checks and inspect meaningful behavior; enable branch protection in your own repository if these checks must block merging.
 
 ## Project: Production-Grade Cloud Application
-This repository will house your 12-week project.
+Adapt this template in the student application repository. The production project begins in Week 5; earlier assignments may use separate repositories.
 - `/src`: Backend Python logic and Frontend UI.
 - `/tests`: Verification suites.
 - `/infrastructure`: Dockerfiles and CI/CD.
 - `/docs/adrs`: Your Architectural Decision Records.
 
 ## Getting Started
-Ensure you have documented your initial environment setup context in this file before asking AI to generate your first lines of code.
+From Week 2 onward, record your environment and verification commands here and explicitly provide this file to your chosen agent, or use its supported instruction-file mechanism. Week 1 uses a lightweight exploratory setup and field report instead. Instructions guide behavior; executable checks and review verify it.

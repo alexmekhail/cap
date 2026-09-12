@@ -1,21 +1,38 @@
-# Week 8: Livesite & Deployment
+# Week 8: Deployment and Operating Boundaries
 
-## Talk Outline: Crossing the Finish Line
-### Technical Deep Dive (75m)
-- **Cloud Deployment:** Navigating GCP/AWS services using AI assistance.
-- **IAM and Permissions:** The most common place AI hallucinations cause security breaches.
-- **Cloud Cost Management:** Setting up billing alerts and budgets *before* you get a $10,000 surprise from runaway AI-generated infrastructure.
-- **The Production Mindset:** What it means to have a "Livesite."
+## Teaching Purpose
+Deploy a bounded demonstration that can be verified, observed, recovered, and shut down without confusing a public URL with production readiness.
 
-## Lab Instructions: The Public URL
-### Objective
-Deploy the Production-Grade Cloud Application to a production cloud environment.
+## Entry Check
+Bring a working container image, PostgreSQL migration evidence, and the Week 6 access policy. Instructor rehearses one cloud path; students arrange cloud access and a personal budget before class. A cloud account is additional to the day-one LLM requirement.
 
-### Steps
-1. **Deployment Scripts:** Deploy the frontend to Vercel/Netlify. For the backend, prompt the AI to generate a Terraform script (`main.tf`) or explicit CLI commands (`gcloud run deploy`) to provision a Google Cloud Run or AWS App Runner service.
-2. **IAM Review:** Ask the AI to generate a strict AWS IAM Policy or GCP Service Account JSON that grants *only* the minimum permissions needed to pull the Docker image and write to CloudWatch/Cloud Logging, explicitly avoiding `*:*` wildcards.
-3. **The Launch:** Execute the deployment. Ensure the frontend can talk to the backend in the cloud.
-4. **The Log:** Document your deployment strategy in `docs/prompt-logs/week-08.md`.
+## Exit Evidence
+A deployed synthetic-data demonstration, release evidence, least-privilege identity decisions, and a runbook for verification, recovery, and cleanup.
 
-### Deliverable
-A publicly accessible URL demonstrating the functional Production-Grade Cloud Application. This achieves the "functional skills" milestone of the program.
+## Session Plan (180 minutes)
+Core instruction (75m), an instructor demonstration (45m), and student practice/review (60m). The assignment is in [homework.md](homework.md).
+
+## Core Instruction
+### 1. Choose one deployment path (25m)
+Default to a single app container on Cloud Run with managed PostgreSQL; an equivalent provider is allowed when the student maps the same responsibilities. A same-origin UI avoids an unnecessary second-host integration problem. Review durable storage and connection limits.
+
+### 2. Identity and configuration (25m)
+Separate the deployer, runtime service identity, and application users. Attach an appropriate runtime identity and grant the needed resource access. Use the provider secret mechanism for database configuration; a service-account key JSON is not an IAM policy.
+
+### 3. Release and operational checks (25m)
+Review the access mode before public exposure. Establish a budget alert, low scaling limits appropriate to the demo, startup/liveness behavior, release smoke checks, and rollback/forward-repair steps. Budget alerts notify; they do not cap spending. Record cleanup steps and retain needed evidence.
+
+## Instructor Demonstration Plan (45m)
+Use a pre-rehearsed instructor project with synthetic data. Inspect the image/version, runtime identity, secret reference, and managed database connection before deploying. Run a browser success check, forbidden-write check, restart/persistence check, and log lookup. Show the release runbook and cleanup path; use a labeled recording if cloud access is unavailable.
+
+## Student Practice and Review (60m)
+Review release readiness in pairs (15m), execute or rehearse a bounded release step (30m), and conduct a go/no-go review against the access and persistence evidence (15m).
+
+## Misconception to Address
+Demonstrate a missing runtime permission in the instructor sandbox. Identify which identity needs which resource grant rather than adding broad administrator access. Keep this separate from app-user authorization.
+
+## Connection to the Next Stage
+Week 9 rehearses incident response in a disposable environment using the same release and observability habits.
+
+## Further Reading
+[Cloud Run service identity](https://docs.cloud.google.com/run/docs/securing/service-identity) · [Cloud Run secrets](https://docs.cloud.google.com/run/docs/configuring/services/secrets) · [Budget alerts](https://docs.cloud.google.com/billing/docs/how-to/budgets)

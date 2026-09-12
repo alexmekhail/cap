@@ -1,24 +1,35 @@
-# Week 10: Industry Expert Workflows
+# Week 10: Workflow Audit and Measured Improvement
 
-## Talk Outline: How the Best Use AI
-### Special Guest Session (45m)
-- **Guest Speakers:** Two non-engineer speakers (e.g., a founder, designer, or product manager) who successfully built applications from scratch using AI.
-- **The Showcase:** They will walk through how they built their apps, highlighting the sheer power of AI for democratization and rapid prototyping.
-- **The Takeaway for Engineers:** Understand what non-engineers can now build in a weekend. As junior engineers transitioning to AI Native Engineers, your value is no longer just writing code—it's building robust, scalable, and secure architectures that a pure AI prototyping workflow cannot reliably achieve.
+## Teaching Purpose
+Improve a personal AI engineering workflow using evidence instead of adopting a tool or rule because it sounds sophisticated.
 
-### Technical Deep Dive (75m)
-- **Open Q&A:** Ask the guests about their context management strategies and biggest roadblocks.
-- **Workflow Optimization:** Fine-tuning your personal AI toolchain.
-- **Future-Proofing:** Staying adaptable as AI models continue to lower the barrier to entry for coding.
+## Entry Check
+Bring logs, PRs, and check results from Weeks 1–9, including the incident exercise. Include a case where autonomous work helped and one where manual investigation was justified.
 
-## Lab Instructions: Workflow Refinement
-### Objective
-Audit and refine your own Agentic workflow based on best practices.
+## Exit Evidence
+Three evidence-backed case studies, one bounded improvement experiment, and a personal operating procedure usable in interviews and future projects.
 
-### Steps
-1. **The Audit:** Review your prompt logs from Weeks 1-8.
-2. **The Refinement:** Extract three specific instances from your logs where the AI generated failing code (e.g., hallucinated a library, wrote an insecure query, missed an edge case) and identify the missing constraint in your prompt.
-3. **The Plan:** Write an "AI Workflow SOP" markdown document containing strict personal rules. Examples: "Always mandate strict typing in Python (Mypy) and TypeScript", "Always provide database DDL before asking for SQL queries", or "Require the AI to write failing Pytests before implementing feature code".
+## Session Plan (180 minutes)
+Core instruction (75m), an instructor demonstration (45m), and student practice/review (60m). The assignment is in [homework.md](homework.md).
 
-### Deliverable
-A finalized Personal Workflow Protocol.
+## Core Instruction
+### 1. Audit the record (25m)
+Identify recurring problems in context, requirements, tests, tool use, coordination, or review. Distinguish correlation from a demonstrated cause. Revisit the initial Week 1 method and the Week 3/4 supervision choices.
+
+### 2. Run a fair comparison (25m)
+Choose one bounded task and change one workflow factor. Use the same baseline and acceptance checks; record time, review effort, tool usage where observable, defects, and caveats. A single trial supports a local decision, not a universal ranking.
+
+### 3. Write operational rules (25m)
+Turn findings into actionable steps with triggers, inputs, checks, and escalation. Keep skills and project instructions concise; retire ineffective rules. Explain when to work in the loop, on the loop, or with multiple agents.
+
+## Instructor Demonstration Plan (45m)
+Before class, record two runs of the same small task and compare them: one with a vague request and one with a verified context map and acceptance checks. Show the actual diffs, failures, review effort, and any inconclusive result. Rewrite one workflow rule based on the evidence.
+
+## Student Practice and Review (60m)
+Choose a repeated issue (15m), design and begin the comparison (30m), and peer-review whether the proposed conclusion is supported (15m).
+
+## Misconception to Address
+Do not convert “this run was faster” into “this tool is always better.” Ask what was held constant and what could explain the result.
+
+## Connection to the Next Stage
+Week 11 tests whether students can explain and adapt this workflow under interview constraints.

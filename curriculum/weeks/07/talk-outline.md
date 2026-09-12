@@ -1,21 +1,38 @@
-# Week 7: Infrastructure & CI/CD
+# Week 7: Containers, PostgreSQL, and Delivery
 
-## Talk Outline: From Code to Container
-### Technical Deep Dive (75m)
-- **Dockerizing with AI:** How to safely generate `Dockerfile` and `docker-compose.yml`.
-- **The CI/CD Pipeline:** Prompting for GitHub Actions workflows.
-- **AI Security Threats:** Understanding how AI often hallucinates insecure defaults (e.g., exposing internal ports, omitting CSRF tokens) and how to explicitly prompt for secure configurations.
-- **Environment Parity:** Ensuring the AI understands the difference between local dev and production builds.
+## Teaching Purpose
+Reproduce the application outside the development machine and make database changes without losing the evidence or data the system depends on.
 
-## Lab Instructions: Containerization
-### Objective
-Fully dockerize the Production-Grade Cloud Application (Backend, Frontend, and Database mock).
+## Entry Check
+Bring the Week 6 application, passing local checks, initial migration, and access policy. Install Docker before class; a setup blocker must be recorded rather than hidden behind a successful local run.
 
-### Steps
-1. **The Dockerfile:** Prompt the AI to create a multi-stage Dockerfile for the frontend (Stage 1: Node.js build, Stage 2: Nginx static serving) and an optimized Python 3.11 slim Dockerfile utilizing dependency caching for the backend.
-2. **Compose:** Generate a `docker-compose.yml` that networks the backend, frontend, and a Postgres database container, injecting the `DATABASE_URL` into the backend via environment variables.
-3. **CI Expansion:** Ask AI to update your GitHub Actions workflow to build and test the Docker images on every PR.
-4. **The Log:** Document the infrastructure prompts in `docs/prompt-logs/week-07.md`.
+## Exit Evidence
+A containerized app connected to PostgreSQL, with explicit migration steps, data-preservation evidence, and CI image build checks.
 
-### Deliverable
-A PR containing the Docker configuration, allowing the mentor to run the full stack via `docker-compose up`.
+## Session Plan (180 minutes)
+Core instruction (75m), an instructor demonstration (45m), and student practice/review (60m). The assignment is in [homework.md](homework.md).
+
+## Core Instruction
+### 1. Build and runtime boundaries (25m)
+Inspect a multi-stage Dockerfile in the chosen classroom project: Node builds static React assets; Python serves the API and assets on the same origin. Dependencies used at build time differ from runtime dependencies. Keep secrets out of layers and inspect the runtime user.
+
+### 2. Database transition and migrations (25m)
+Run migrations on PostgreSQL, seed records, and verify constraints and query behavior. SQLite results alone do not establish PostgreSQL behavior. Add a nullable field, upgrade against existing data, and compare IDs and relationships afterward.
+
+### 3. Delivery and recovery (25m)
+Separate image build, migration, and app startup. Define health checks, rollout verification, and what happens if migration or startup fails. Do not have every replica race to run migrations. A rollback may require forward repair rather than a destructive downgrade.
+
+## Instructor Demonstration Plan (45m)
+Prepare and walk through a Compose file for the chosen classroom project, build the image, start PostgreSQL, run the initial migration and seed as one-off commands, then start the app. Create an item and restart only the app to demonstrate persistence. Apply an additive description-column migration in a disposable database and compare saved records before and after.
+
+## Student Practice and Review (60m)
+Trace configuration and networking (15m), run the Compose sequence in their project, pairing with a classmate if Docker is unavailable (30m), then review migration/recovery plans (15m).
+
+## Misconception to Address
+Change the database hostname to an invalid service name in a disposable environment. Read the failure and fix the configuration. Contrast this with schema mismatch: identical symptoms at the UI may require different repairs.
+
+## Connection to the Next Stage
+Week 8 deploys the tested image with managed persistence and an explicit release/access decision.
+
+## Further Reading
+[Docker multi-stage builds](https://docs.docker.com/build/building/multi-stage/) · [Compose startup order](https://docs.docker.com/compose/how-tos/startup-order/) · [Alembic tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
