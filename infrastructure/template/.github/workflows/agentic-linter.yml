@@ -31,12 +31,12 @@ jobs:
           fi
           
           for log in docs/prompt-logs/*.md; do
-            if [[ "$log" == *"TEMPLATE.md"* ]]; then
+            if [[ "$log" == *"TEMPLATE.md"* || "${log##*/}" == "week-01.md" ]]; then
               continue
             fi
             # Verify mandatory headers
-            for header in "## 1. The Goal" "## 2. Initial Context Provided" "## 3. The AI Hallucination / Error" "## 4. The Correction Strategy" "## 5. Final Outcome"; do
-              if ! grep -q "$header" "$log"; then
+            for header in "## 1. Goal and Acceptance Criteria" "## 2. Context and Architecture" "## 3. Validation and Findings" "## 4. Agent Recovery and Human Intervention" "## 5. Outcome and Limits"; do
+              if ! grep -Fqx "$header" "$log"; then
                 echo "Error: Prompt log $log is missing mandatory header: $header"
                 exit 1
               fi

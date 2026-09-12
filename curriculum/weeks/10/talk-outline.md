@@ -1,24 +1,22 @@
-# Week 10: Industry Expert Workflows
+# Week 10: Evidence-Based Workflow Audit
 
-## Talk Outline: How the Best Use AI
-### Special Guest Session (45m)
-- **Guest Speakers:** Two non-engineer speakers (e.g., a founder, designer, or product manager) who successfully built applications from scratch using AI.
-- **The Showcase:** They will walk through how they built their apps, highlighting the sheer power of AI for democratization and rapid prototyping.
-- **The Takeaway for Engineers:** Understand what non-engineers can now build in a weekend. As junior engineers transitioning to AI Native Engineers, your value is no longer just writing code—it's building robust, scalable, and secure architectures that a pure AI prototyping workflow cannot reliably achieve.
+## Goal
+Students evaluate how their own engineering workflow changed from the Week 1 first attempt to the deployed capstone. Guest inspiration belongs to Week 1; this session uses students' own evidence to improve their practice.
 
-### Technical Deep Dive (75m)
-- **Open Q&A:** Ask the guests about their context management strategies and biggest roadblocks.
-- **Workflow Optimization:** Fine-tuning your personal AI toolchain.
-- **Future-Proofing:** Staying adaptable as AI models continue to lower the barrier to entry for coding.
+## Workflow Reveal (45m)
+The instructor compares an early prompt log with a later agent session: what context was verified, which checks caught failures, where intervention mattered, and what escaped detection. Show one case where manual investigation was the appropriate choice.
 
-## Lab Instructions: Workflow Refinement
-### Objective
-Audit and refine your own Agentic workflow based on best practices.
+## Core Instruction (75m)
+- **Evidence review (25m):** Review logs and PRs from Weeks 1–9. Distinguish model mistakes, incomplete requirements, environment problems, and weak acceptance tests.
+- **Controlled improvement (25m):** Choose one recurring issue and change one part of the workflow. Compare before/after on the same bounded task, recording elapsed time, review effort, checks, and remaining defects. Treat a single trial as evidence for that task, not a universal tool ranking.
+- **Personal operating procedure (25m):** Write actionable rules for context gathering, acceptance checks, budgets, escalation, and review. Explain when to supervise an agent and when to investigate directly.
 
-### Steps
-1. **The Audit:** Review your prompt logs from Weeks 1-8.
-2. **The Refinement:** Extract three specific instances from your logs where the AI generated failing code (e.g., hallucinated a library, wrote an insecure query, missed an edge case) and identify the missing constraint in your prompt.
-3. **The Plan:** Write an "AI Workflow SOP" markdown document containing strict personal rules. Examples: "Always mandate strict typing in Python (Mypy) and TypeScript", "Always provide database DDL before asking for SQL queries", or "Require the AI to write failing Pytests before implementing feature code".
+## Lab: Audit the Capstone Workflow
+1. Select three specific decisions or failures from Weeks 1–9 and link to their logs or diffs.
+2. Explain the cause and the evidence; do not assume every failure was a bad prompt.
+3. Test one workflow improvement and record its result, including an inconclusive or negative result.
+4. Write `docs/ai-workflow-sop.md`, with rules grounded in those examples.
+5. Record the experiment in `docs/prompt-logs/week-10.md` and use the SOP during Week 11 interview practice.
 
-### Deliverable
-A finalized Personal Workflow Protocol.
+## Deliverable
+A personal AI Workflow SOP, three linked case studies, and one measured improvement experiment. Grade the reasoning and validation evidence, not the number of tools used or the apparent speed of generation.

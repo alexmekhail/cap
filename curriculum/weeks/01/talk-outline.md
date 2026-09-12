@@ -1,24 +1,69 @@
-# Week 1: Tools, Context, and AI-Native Setup
+# Week 1: "The Art of the Possible"
+## Guest Speakers, Inspiration & Your First Attempt
 
-## Talk Outline: The Architect's Desk
-### Technical Deep Dive (75m)
-- **Writer vs. Steer-er:** The paradigm shift in modern software engineering.
-- **Native Package Managers:** Why installing AI CLIs via `brew` or `apt` prevents pathing errors compared to raw HTTP installs.
-- **Managing the Context Window:** How to feed AI the *right* data without overwhelming it.
-- **Hyper-Specific Prompt Privacy:** Redaction protocols and data security. You must explicitly scrub GCP service account JSONs, billing IDs, and internal network paths before prompting.
-- **The SAW Setup:** Introduction to the Production-Grade Cloud Application repository.
+**Goal:** Students see real practitioners who built real things with AI. They get inspired, ask hard questions, and then go try it themselves — no training wheels, no lecture first. Come back next week with stories about what worked and what didn't.
 
-## Lab Instructions: Context Initialization
+> 💡 **Why speakers first?** Students don't yet know what AI-assisted engineering looks like in practice. Showing them before teaching them creates hunger. Their first solo attempt — and the struggles that come with it — makes Week 2's technical deep dive land harder.
+
+---
+
+## Session Format (90–120m)
+
+### Guest Speaker Block (60–75m)
+- **Speaker 1 (~25m + 5m Q&A):** What they built, their workflow, their tools, their failures, their aha moments.
+- **Speaker 2 (~25m + 5m Q&A):** Same format, different background/domain.
+- **Open Q&A Panel (15m):** Both speakers together. Students ask anything — tooling, mistakes, "would you do it differently?"
+
+### Instructor Debrief (15m)
+- Key patterns across both speakers
+- What tools did they use? What patterns did they follow (even if they didn't name them)?
+- What's the gap between "I used AI" and "I engineered with AI"? (foreshadowing W2–W4)
+- Quick demo: show 2–3 AI coding tools so students know their options for the assignment (ChatGPT, Gemini CLI, Copilot, Cursor — just a taste, not a tutorial)
+
+### Workspace Setup (15m)
+- Quick-start guide: install at least one AI coding tool
+- Create a GitHub repo for your work
+- Before the first attempt: use public or synthetic data, keep credentials out of prompts and commits, and review commands before running them.
+- No context files required yet — just get a tool running. We will introduce the structured workspace in Week 2.
+
+---
+
+## Speaker Brief (send to guests for prep)
+
+> We'd love you to share:
+> 1. **What you built** — Demo or screenshots.
+> 2. **Your workflow** — What AI tools did you use? Chat? CLI? IDE?
+> 3. **A failure story** — A time AI led you astray and how you recovered.
+> 4. **Your "superpower prompt"** — One prompting technique that changed everything for you.
+> 5. **Honest take** — What AI is still bad at in your experience.
+
+---
+
+## Assignment: "Go Try It"
+
 ### Objective
-Set up your local AI environment and establish your initial project context.
+Use any AI tool to build **anything**. No rules, no constraints on scope. The point is to experience AI-assisted coding for the first time (or with fresh eyes after the speakers) and come back with an honest report.
 
-### Steps
-1. **Tooling:** Install your native AI CLI or IDE extension (e.g., Gemini CLI, Copilot).
-2. **The Context File:** Create a `AI_CONTEXT.md` or `CLAUDE.md` in your workspace. Define the core parameters of your Cloud Application (e.g., Python backend, GCP target).
-3. **The First Prompt:** Use AI to generate a `.gitignore` and `requirements.txt` specifically tailored for a cloud application backend.
-4. **The Log:** Document this first interaction in `docs/prompt-logs/week-01.md`.
+### The Only Requirements
+- Pick an AI tool (any: ChatGPT, Claude, Gemini, Copilot, Cursor, etc.)
+- Try to build something — a small app, a script, a tool, anything
+- **Write a brief "field report"** in `docs/prompt-logs/week-01.md`:
+  1. What did you try to build?
+  2. What tool did you use?
+  3. What worked surprisingly well?
+  4. What went wrong? Where did AI fail you?
+  5. What questions do you have now that you didn't have before?
+
+### Why This Format
+This is intentionally unstructured. You don't know the "right" way to prompt yet — that's the point. Your struggles this week become the curriculum for Week 2. The field report is more valuable than the code.
 
 ### Deliverable
-A configured local environment and a PR containing your base repository structure and first prompt log.
-irst prompt log.
-t log.
+A GitHub repo with whatever you built (working or not) and your field report.
+
+### Grading Focus
+
+| Dimension | Weight |
+|---|---|
+| **Did you try?** — Genuine attempt, not a one-liner | 30% |
+| **Field Report Honesty** — Real observations about what worked/failed | 40% |
+| **Questions Generated** — Thoughtful questions that show curiosity | 30% |

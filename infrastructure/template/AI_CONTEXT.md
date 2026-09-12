@@ -15,4 +15,4 @@ This repository will house your 12-week project.
 - `/docs/adrs`: Your Architectural Decision Records.
 
 ## Getting Started
-Ensure you have documented your initial environment setup context in this file before asking AI to generate your first lines of code.
+From Week 2 onward, record your environment and verification commands here and explicitly provide this file to your chosen agent, or use its supported instruction-file mechanism. Week 1 uses a lightweight exploratory setup and field report instead. Instructions guide behavior; executable checks and review verify it.
