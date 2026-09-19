@@ -170,14 +170,15 @@ function applyMove(board, fromR, fromC, move) {
    who made the move — an opponent's capture can trigger it just as a
    player's own move can).
 
-   Delivery: up to 4 chips are owed. As many as possible are placed
-   immediately on empty home-row squares; if some home-row squares are
-   currently occupied (e.g. by an opposing king sitting there), the
-   remaining chips stay "pending" and get placed automatically on later
-   turns as soon as those squares free up. The wave only ever fires once
-   per player, even if the trigger condition becomes true again later.
-   A player with zero chips anywhere on the board is already out of the
-   game and never receives reinforcements.
+   Delivery: up to 4 chips are owed, but none are placed until the home
+   row is entirely free of chips of EITHER color — a stray opposing chip
+   (e.g. a king that wandered onto that row) blocks the whole deployment,
+   not just its own square. The pending chips just wait; once the last
+   occupant leaves the row (on some later turn), all of them are placed
+   at once. The wave only ever fires once per player, even if the trigger
+   condition becomes true again later. A player with zero chips anywhere
+   on the board is already out of the game and never receives
+   reinforcements.
    ------------------------------------------------------------ */
 function checkAndDeployReinforcements(board, reinforcementState) {
   const newlySpawned = []; // {row, col} of chips placed this call, for spawn animation
@@ -205,18 +206,27 @@ function checkAndDeployReinforcements(board, reinforcementState) {
     }
   }
 
-  // Deploy (or continue deploying) any pending reinforcements onto empty
-  // home-row squares. This runs every call so chips owed but blocked by an
-  // occupied square get placed as soon as that square opens up.
+  // Deploy any pending reinforcements, but only once every dark square on
+  // the home row is empty — a chip of either color sitting on the row
+  // holds up the entire wave, not just the square it occupies.
   for (const player of [1, 2]) {
     const state = reinforcementState[player];
     if (state.pending <= 0) continue;
 
     const homeRow = homeRowFor(player);
+    let rowFullyClear = true;
+    for (let c = 0; c < BOARD_SIZE; c++) {
+      if (!isDarkSquare(homeRow, c)) continue;
+      if (board[homeRow][c]) {
+        rowFullyClear = false;
+        break;
+      }
+    }
+    if (!rowFullyClear) continue;
+
     for (let c = 0; c < BOARD_SIZE; c++) {
       if (state.pending <= 0) break;
       if (!isDarkSquare(homeRow, c)) continue;
-      if (board[homeRow][c]) continue; // occupied - wait for it to free up
 
       board[homeRow][c] = { player, king: false };
       state.pending--;
