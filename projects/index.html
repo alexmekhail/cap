@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkers</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="app-header">
+    <h1>Checkers</h1>
+    <button id="new-game-btn" class="btn">New game</button>
+  </header>
+
+  <div class="table">
+
+    <!-- Player 2 sits at the top -->
+    <div class="player-panel" id="panel-p2">
+      <div class="player-swatch p2-swatch"></div>
+      <div class="player-info">
+        <div class="player-name">Player 2</div>
+        <div class="player-stats">
+          <span id="p2-count">8 chips</span>
+          <span class="dot">&middot;</span>
+          <span id="p2-reinforcement" class="reinforcement-status">Reinforcements ready</span>
+        </div>
+      </div>
+      <div class="turn-indicator" id="turn-indicator-p2" aria-hidden="true"></div>
+    </div>
+
+    <div class="board-wrap">
+      <div id="board" class="board" role="grid" aria-label="Checkers board"></div>
+    </div>
+
+    <!-- Player 1 sits at the bottom, moves first -->
+    <div class="player-panel" id="panel-p1">
+      <div class="turn-indicator" id="turn-indicator-p1" aria-hidden="true"></div>
+      <div class="player-swatch p1-swatch"></div>
+      <div class="player-info">
+        <div class="player-name">Player 1</div>
+        <div class="player-stats">
+          <span id="p1-count">8 chips</span>
+          <span class="dot">&middot;</span>
+          <span id="p1-reinforcement" class="reinforcement-status">Reinforcements ready</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="status-bar" id="status-bar">Player 1's turn</div>
+
+</div>
+
+<div id="win-overlay" class="win-overlay hidden">
+  <div class="win-card">
+    <div class="win-title" id="win-title">Player 1 wins!</div>
+    <button id="rematch-btn" class="btn btn-primary">Rematch</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
