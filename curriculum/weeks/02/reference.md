@@ -22,6 +22,61 @@ Stop: acceptance criteria conflict, data may be lost, or checks remain unexplain
 Report: changed files, checks run with results, and remaining limitations.
 ```
 
+## Reusable Skill: Review a Code Change
+
+Compare three standalone versions of the same review task:
+
+1. [Find problems](skills/diff-review/SKILL.md): a deliberately limited teaching example with no explicit pass outcome.
+2. [Classify the change](skills/review-decision/SKILL.md): explicitly allows **accept**, **comment**, or **reject**.
+3. [Classify with a refuter](skills/review-with-refuter/SKILL.md): challenges potential findings before deciding.
+
+Use separate fresh conversations with the same request, diff, relevant code, and check results. These are alternatives, not a pipeline. None submits a PR review or changes code. The refuter is an additional review pass, not necessarily a separate agent.
+
+Version 1 can encourage speculative criticism; it does not always find a problem. Versions 2 and 3 are not guaranteed to be better: compare whether their findings are supported. Try both the prepared defective change and a verified correct change so students can observe an opportunity to pass.
+
+In a fix-and-review loop, accept ends the loop and comment leaves optional feedback. Act on supported blockers; obtain missing required evidence before deciding on a fix. Set an iteration limit and inspect recurring findings instead of continuing indefinitely.
+
+Example invocation, after copying the skill into your project:
+
+```text
+Read skills/diff-review/SKILL.md and use it to review my staged changes
+against this request: add an incomplete-tasks filter without deleting
+saved tasks. Return findings with file references and any validation
+still needed. Do not edit the code.
+
+```
+
+Repeat in fresh conversations, replacing the skill path with
+`skills/review-decision/SKILL.md` and `skills/review-with-refuter/SKILL.md`.
+Supply the same inputs; let each skill determine its output.
+
+The course file is not automatically installed. Explicitly ask the agent to read it, or use your tool's supported skill installation mechanism.
+
+### Classroom Example: Hiding Is Not Deleting
+
+**Request:** Add an incomplete-tasks filter. Turning it off restores the full list. Preserve all saved tasks.
+
+**Prepared defective diff** (illustrative JavaScript, not code to apply to the students' apps):
+
+```diff
+ function onFilterChange(enabled) {
+   showIncompleteOnly = enabled;
++  if (enabled) {
++    tasks = tasks.filter(task => !task.completed);
++    localStorage.setItem('tasks', JSON.stringify(tasks));
++  }
+   renderTasks();
+ }
+```
+
+**Review finding:** Turning the filter on removes completed tasks from the task collection and overwrites saved data. Turning it off cannot restore them. The implementation should filter the displayed list while preserving the underlying task collection.
+
+**Review decision: REJECT.** The finding is supported by the assignment to `tasks` and the saved-data write. This blocks acceptance because preserving completed tasks is an explicit requirement. Fix the behavior and provide validation before reconsideration.
+
+**Follow-up validation:** Create one complete and one incomplete task. Toggle the filter on and off, then reload. Both tasks must remain saved; the filter changes only which tasks are displayed.
+
+Review inspects the change and identifies concerns. Validation runs checks and exercises behavior. Use both before accepting a change.
+
 ## Reusable Skill: Validate a Small Change
 **Input:** task criteria, changed files, known baseline, and working check commands.
 1. Compare the diff with the requested behavior; identify unrelated changes.
