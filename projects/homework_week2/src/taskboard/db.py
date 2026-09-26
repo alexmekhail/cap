@@ -41,7 +41,13 @@ class StorageError(TaskboardError):
     """The database file can't be created, opened, or read."""
 
     def __init__(self, db_path: Path, exc: Exception) -> None:
-        reason = exc.strerror if isinstance(exc, OSError) and exc.strerror else exc
+        if isinstance(exc, FileExistsError):
+            # mkdir(exist_ok=True) raises this only when a parent is a regular file.
+            reason: object = "Not a directory"
+        elif isinstance(exc, OSError) and exc.strerror:
+            reason = exc.strerror
+        else:
+            reason = exc
         super().__init__(f"Cannot open task database at {db_path}: {reason}.")
 
 

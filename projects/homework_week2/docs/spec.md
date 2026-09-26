@@ -104,6 +104,12 @@ All of these exit `1`, print `Error: ...` to stderr, and leave the database unch
 
 - **AC-23: Database location.** With `TASKBOARD_DB=/some/dir/x.db`, `board add "X"` creates that file and writes the task to it. When the variable is unset, the database is `~/.taskboard/tasks.db`, and missing parent directories are created.
 
+### Added after Phase 2/3 review (approved by Alex)
+
+- **AC-24: Unusable database path.** If `TASKBOARD_DB` points to a path that can't be created or isn't a SQLite database, any command prints `Error: Cannot open task database at <path>: <reason>.` and exits `1`, with no traceback. When a parent of the path is a regular file, the reason is `Not a directory`. Examples of unusable paths: a directory, a non-SQLite file, or a path under a regular file.
+- **AC-25: Edits are all-or-nothing.** `board edit` validates every given option before writing. If any option is invalid, for example `board edit 1 --title New --priority urgent`, the error for the invalid option is printed and nothing is changed, including the valid options.
+- **AC-26: Filtered list layout.** With `--priority` and/or `--search` but no `--column`, `board list` still prints all three headers, and a column with no matching tasks shows `(empty)`. With `--column`, only that column's header is printed. If no task matches at all, AC-15 applies.
+
 ## Out of scope
 
 - Clearing a due date once it has been set.

@@ -46,3 +46,15 @@ def test_unusable_db_path_gives_clean_error(
     assert result.returncode == 1
     assert result.stdout == ""
     assert result.stderr.startswith("Error: Cannot open task database at ")
+
+
+@pytest.mark.parametrize("depth", [1, 2])
+def test_ac24_parent_is_a_file_says_not_a_directory(tmp_path: Path, depth: int) -> None:
+    blocker = tmp_path / "plain-file"
+    blocker.write_text("x")
+    db = blocker.joinpath(*["sub"] * (depth - 1), "tasks.db")
+    result = run_board(db, "list")
+    assert result.returncode == 1
+    assert result.stderr == (
+        f"Error: Cannot open task database at {db}: Not a directory.\n"
+    )
