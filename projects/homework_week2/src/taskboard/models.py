@@ -57,6 +57,26 @@ class TaskChanges:
     due: date | None
 
 
+@dataclass(frozen=True)
+class TaskFilter:
+    """Validated `list` filters; `None` means don't filter on that field."""
+
+    column: Column | None = None
+    priority: Priority | None = None
+    search: str | None = None
+
+    @property
+    def is_active(self) -> bool:
+        return any(v is not None for v in (self.column, self.priority, self.search))
+
+    def matches(self, task: Task) -> bool:
+        return (
+            (self.column is None or task.column == self.column)
+            and (self.priority is None or task.priority == self.priority)
+            and (self.search is None or self.search.casefold() in task.title.casefold())
+        )
+
+
 def _choices(enum_type: type[StrEnum]) -> str:
     return ", ".join(member.value for member in enum_type)
 
@@ -101,11 +121,18 @@ def parse_due(raw: str | None) -> date | None:
         raise error from None
 
 
-def group_by_column(tasks: list[Task]) -> dict[Column, list[Task]]:
-    """Group tasks by column in fixed board order, sorted by id, keeping empties."""
-    groups: dict[Column, list[Task]] = {column: [] for column in Column}
+def group_by_column(
+    tasks: list[Task], only: Column | None = None
+) -> dict[Column, list[Task]]:
+    """Group tasks by column in fixed board order, sorted by id, keeping empties.
+
+    With `only`, return just that column's group.
+    """
+    columns = [only] if only is not None else list(Column)
+    groups: dict[Column, list[Task]] = {column: [] for column in columns}
     for task in sorted(tasks, key=lambda t: t.id):
-        groups[task.column].append(task)
+        if task.column in groups:
+            groups[task.column].append(task)
     return groups
 
 
@@ -120,3 +147,18 @@ def parse_changes(
         priority=parse_priority(priority) if priority is not None else None,
         due=parse_due(due),
     )
+
+
+def parse_filter(
+    column: str | None, priority: str | None, search: str | None
+) -> TaskFilter:
+    return TaskFilter(
+        column=parse_column(column) if column is not None else None,
+        priority=parse_priority(priority) if priority is not None else None,
+        search=search,
+    )
+
+
+def filter_tasks(tasks: list[Task], task_filter: TaskFilter) -> list[Task]:
+    """Keep tasks matching every given filter (AND)."""
+    return [task for task in tasks if task_filter.matches(task)]

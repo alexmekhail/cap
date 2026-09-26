@@ -11,10 +11,12 @@ from taskboard import db
 from taskboard.models import (
     Task,
     TaskboardError,
+    filter_tasks,
     group_by_column,
     parse_changes,
     parse_column,
     parse_due,
+    parse_filter,
     parse_priority,
     validate_title,
 )
@@ -62,13 +64,29 @@ def add(
 
 
 @app.command(name="list")
-def list_() -> None:
-    """Show tasks grouped by column."""
-    with db.connect() as conn:
-        tasks = db.list_tasks(conn)
+def list_(
+    column: Annotated[
+        str | None, typer.Option(help="Only this column: todo, in-progress, done.")
+    ] = None,
+    priority: Annotated[
+        str | None, typer.Option(help="Only this priority: low, medium, high.")
+    ] = None,
+    search: Annotated[
+        str | None, typer.Option(help="Only titles containing this text.")
+    ] = None,
+) -> None:
+    """Show tasks grouped by column, optionally filtered."""
+    with _user_errors():
+        task_filter = parse_filter(column, priority, search)
+        with db.connect() as conn:
+            tasks = filter_tasks(db.list_tasks(conn), task_filter)
+    if task_filter.is_active and not tasks:
+        typer.echo("No tasks match the given filters.")
+        return
     today = date.today()
-    for column, column_tasks in group_by_column(tasks).items():
-        typer.echo(column.value.upper())
+    groups = group_by_column(tasks, only=task_filter.column)
+    for column_name, column_tasks in groups.items():
+        typer.echo(column_name.value.upper())
         if not column_tasks:
             typer.echo("  (empty)")
         for task in column_tasks:

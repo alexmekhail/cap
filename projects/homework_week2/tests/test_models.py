@@ -7,11 +7,14 @@ from taskboard.models import (
     Priority,
     Task,
     TaskChanges,
+    TaskFilter,
     ValidationError,
+    filter_tasks,
     group_by_column,
     parse_changes,
     parse_column,
     parse_due,
+    parse_filter,
     parse_priority,
     validate_title,
 )
@@ -171,3 +174,47 @@ def test_parse_changes_requires_at_least_one_field() -> None:
 def test_parse_changes_rejects_blank_title() -> None:
     with pytest.raises(ValidationError, match=r"^Title cannot be empty\.$"):
         parse_changes(title="  ", priority=None, due=None)
+
+
+# --- filters (AC-13, AC-14) ---
+
+
+def titled(task_id: int, title: str, priority: Priority, column: Column) -> Task:
+    return Task(id=task_id, title=title, priority=priority, due=None, column=column)
+
+
+FILTER_TASKS = [
+    titled(1, "Buy milk", Priority.LOW, Column.TODO),
+    titled(2, "Pay rent", Priority.HIGH, Column.TODO),
+    titled(3, "MILK run", Priority.HIGH, Column.DONE),
+]
+
+
+def test_parse_filter_validates_values() -> None:
+    task_filter = parse_filter(column="TODO", priority="High", search="milk")
+    assert task_filter == TaskFilter(
+        column=Column.TODO, priority=Priority.HIGH, search="milk"
+    )
+
+
+def test_parse_filter_rejects_bad_column_and_priority() -> None:
+    with pytest.raises(ValidationError, match="Unknown column 'blocked'"):
+        parse_filter(column="blocked", priority=None, search=None)
+    with pytest.raises(ValidationError, match="Invalid priority 'urgent'"):
+        parse_filter(column=None, priority="urgent", search=None)
+
+
+@pytest.mark.parametrize(
+    ("task_filter", "expected_ids"),
+    [
+        (TaskFilter(), [1, 2, 3]),
+        (TaskFilter(column=Column.TODO), [1, 2]),
+        (TaskFilter(priority=Priority.HIGH), [2, 3]),
+        (TaskFilter(search="milk"), [1, 3]),
+        (TaskFilter(column=Column.TODO, priority=Priority.HIGH), [2]),
+        (TaskFilter(column=Column.DONE, priority=Priority.LOW), []),
+        (TaskFilter(search="50%"), []),
+    ],
+)
+def test_filter_tasks(task_filter: TaskFilter, expected_ids: list[int]) -> None:
+    assert [t.id for t in filter_tasks(FILTER_TASKS, task_filter)] == expected_ids
