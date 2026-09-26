@@ -8,6 +8,7 @@ from taskboard.models import (
     Task,
     ValidationError,
     group_by_column,
+    parse_column,
     parse_due,
     parse_priority,
     validate_title,
@@ -125,3 +126,27 @@ def test_group_by_column_keeps_fixed_order_and_empty_columns() -> None:
     assert [t.id for t in groups[Column.TODO]] == [1, 2]
     assert groups[Column.IN_PROGRESS] == []
     assert [t.id for t in groups[Column.DONE]] == [3]
+
+
+# --- column (AC-8, AC-20) ---
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("todo", Column.TODO),
+        ("In-Progress", Column.IN_PROGRESS),
+        (" DONE ", Column.DONE),
+    ],
+)
+def test_parse_column_accepts_any_case(raw: str, expected: Column) -> None:
+    assert parse_column(raw) is expected
+
+
+@pytest.mark.parametrize("raw", ["blocked", "in progress", "in_progress", ""])
+def test_parse_column_rejects_unknown(raw: str) -> None:
+    with pytest.raises(ValidationError) as exc:
+        parse_column(raw)
+    assert str(exc.value) == (
+        f"Unknown column '{raw}'. Choose from: todo, in-progress, done."
+    )

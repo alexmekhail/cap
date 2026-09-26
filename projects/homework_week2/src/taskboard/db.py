@@ -7,7 +7,7 @@ from contextlib import contextmanager
 from datetime import date
 from pathlib import Path
 
-from taskboard.models import Column, Priority, Task
+from taskboard.models import Column, Priority, Task, TaskNotFoundError
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS tasks (
@@ -73,3 +73,19 @@ def add_task(
 def list_tasks(conn: sqlite3.Connection) -> list[Task]:
     rows = conn.execute(f"{_SELECT} ORDER BY id").fetchall()
     return [_row_to_task(row) for row in rows]
+
+
+def get_task(conn: sqlite3.Connection, task_id: int) -> Task:
+    row = conn.execute(f"{_SELECT} WHERE id = ?", (task_id,)).fetchone()
+    if row is None:
+        raise TaskNotFoundError(task_id)
+    return _row_to_task(row)
+
+
+def move_task(conn: sqlite3.Connection, task_id: int, column: Column) -> Task:
+    cursor = conn.execute(
+        "UPDATE tasks SET col = ? WHERE id = ?", (column.value, task_id)
+    )
+    if cursor.rowcount == 0:
+        raise TaskNotFoundError(task_id)
+    return get_task(conn, task_id)

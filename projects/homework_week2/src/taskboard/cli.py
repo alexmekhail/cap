@@ -12,6 +12,7 @@ from taskboard.models import (
     Task,
     TaskboardError,
     group_by_column,
+    parse_column,
     parse_due,
     parse_priority,
     validate_title,
@@ -71,3 +72,16 @@ def list_() -> None:
             typer.echo("  (empty)")
         for task in column_tasks:
             typer.echo(_format_task(task, today))
+
+
+@app.command()
+def move(
+    task_id: Annotated[int, typer.Argument(help="Task id.")],
+    column: Annotated[str, typer.Argument(help="todo, in-progress, or done.")],
+) -> None:
+    """Move a task to another column."""
+    with _user_errors():
+        target = parse_column(column)
+        with db.connect() as conn:
+            task = db.move_task(conn, task_id, target)
+    typer.echo(f"Moved task {task.id} to {task.column.value}.")

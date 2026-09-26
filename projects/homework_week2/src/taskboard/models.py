@@ -16,6 +16,13 @@ class ValidationError(TaskboardError):
     """User input that does not satisfy the spec."""
 
 
+class TaskNotFoundError(TaskboardError):
+    """No task with the requested id."""
+
+    def __init__(self, task_id: int) -> None:
+        super().__init__(f"Task {task_id} not found.")
+
+
 class Priority(StrEnum):
     LOW = "low"
     MEDIUM = "medium"
@@ -58,6 +65,15 @@ def parse_priority(raw: str) -> Priority:
     except ValueError:
         raise ValidationError(
             f"Invalid priority '{raw}'. Choose from: {_choices(Priority)}."
+        ) from None
+
+
+def parse_column(raw: str) -> Column:
+    try:
+        return Column(raw.strip().lower())
+    except ValueError:
+        raise ValidationError(
+            f"Unknown column '{raw}'. Choose from: {_choices(Column)}."
         ) from None
 
 
