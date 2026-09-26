@@ -7,7 +7,14 @@ from contextlib import contextmanager
 from datetime import date
 from pathlib import Path
 
-from taskboard.models import Column, Priority, Task, TaskChanges, TaskNotFoundError
+from taskboard.models import (
+    Column,
+    Priority,
+    Task,
+    TaskboardError,
+    TaskChanges,
+    TaskNotFoundError,
+)
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS tasks (
@@ -30,14 +37,34 @@ def get_db_path() -> Path:
     return Path.home() / ".taskboard" / "tasks.db"
 
 
+class StorageError(TaskboardError):
+    """The database file can't be created, opened, or read."""
+
+    def __init__(self, db_path: Path, exc: Exception) -> None:
+        reason = exc.strerror if isinstance(exc, OSError) and exc.strerror else exc
+        super().__init__(f"Cannot open task database at {db_path}: {reason}.")
+
+
+def _open(db_path: Path) -> sqlite3.Connection:
+    """Create parent dirs, connect, and ensure the schema; wrap failures."""
+    try:
+        db_path.parent.mkdir(parents=True, exist_ok=True)
+        conn = sqlite3.connect(db_path)
+    except (OSError, sqlite3.Error) as exc:
+        raise StorageError(db_path, exc) from None
+    try:
+        conn.execute(_SCHEMA)
+    except sqlite3.Error as exc:
+        conn.close()
+        raise StorageError(db_path, exc) from None
+    return conn
+
+
 @contextmanager
 def connect(path: Path | None = None) -> Iterator[sqlite3.Connection]:
     """Open the database (creating dirs and schema), commit on success, always close."""
-    db_path = path if path is not None else get_db_path()
-    db_path.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(db_path)
+    conn = _open(path if path is not None else get_db_path())
     try:
-        conn.execute(_SCHEMA)
         yield conn
         conn.commit()
     except BaseException:
