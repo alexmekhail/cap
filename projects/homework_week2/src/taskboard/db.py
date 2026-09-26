@@ -7,7 +7,7 @@ from contextlib import contextmanager
 from datetime import date
 from pathlib import Path
 
-from taskboard.models import Column, Priority, Task, TaskNotFoundError
+from taskboard.models import Column, Priority, Task, TaskChanges, TaskNotFoundError
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS tasks (
@@ -85,6 +85,28 @@ def get_task(conn: sqlite3.Connection, task_id: int) -> Task:
 def move_task(conn: sqlite3.Connection, task_id: int, column: Column) -> Task:
     cursor = conn.execute(
         "UPDATE tasks SET col = ? WHERE id = ?", (column.value, task_id)
+    )
+    if cursor.rowcount == 0:
+        raise TaskNotFoundError(task_id)
+    return get_task(conn, task_id)
+
+
+def update_task(conn: sqlite3.Connection, task_id: int, changes: TaskChanges) -> Task:
+    """Apply non-None fields; COALESCE keeps the stored value for the rest."""
+    cursor = conn.execute(
+        """
+        UPDATE tasks
+        SET title = COALESCE(?, title),
+            priority = COALESCE(?, priority),
+            due = COALESCE(?, due)
+        WHERE id = ?
+        """,
+        (
+            changes.title,
+            changes.priority.value if changes.priority else None,
+            changes.due.isoformat() if changes.due else None,
+            task_id,
+        ),
     )
     if cursor.rowcount == 0:
         raise TaskNotFoundError(task_id)

@@ -12,6 +12,7 @@ from taskboard.models import (
     Task,
     TaskboardError,
     group_by_column,
+    parse_changes,
     parse_column,
     parse_due,
     parse_priority,
@@ -85,3 +86,18 @@ def move(
         with db.connect() as conn:
             task = db.move_task(conn, task_id, target)
     typer.echo(f"Moved task {task.id} to {task.column.value}.")
+
+
+@app.command()
+def edit(
+    task_id: Annotated[int, typer.Argument(help="Task id.")],
+    title: Annotated[str | None, typer.Option(help="New title.")] = None,
+    priority: Annotated[str | None, typer.Option(help="low, medium, or high.")] = None,
+    due: Annotated[str | None, typer.Option(help="New due date, YYYY-MM-DD.")] = None,
+) -> None:
+    """Change a task's title, priority, or due date."""
+    with _user_errors():
+        changes = parse_changes(title, priority, due)
+        with db.connect() as conn:
+            task = db.update_task(conn, task_id, changes)
+    typer.echo(f"Updated task {task.id}.")

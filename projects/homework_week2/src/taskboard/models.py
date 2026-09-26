@@ -48,6 +48,15 @@ class Task:
         return self.due is not None and self.due < today and self.column != Column.DONE
 
 
+@dataclass(frozen=True)
+class TaskChanges:
+    """Validated edits; `None` means leave that field unchanged."""
+
+    title: str | None
+    priority: Priority | None
+    due: date | None
+
+
 def _choices(enum_type: type[StrEnum]) -> str:
     return ", ".join(member.value for member in enum_type)
 
@@ -98,3 +107,16 @@ def group_by_column(tasks: list[Task]) -> dict[Column, list[Task]]:
     for task in sorted(tasks, key=lambda t: t.id):
         groups[task.column].append(task)
     return groups
+
+
+def parse_changes(
+    title: str | None, priority: str | None, due: str | None
+) -> TaskChanges:
+    """Validate every given field before anything is written."""
+    if title is None and priority is None and due is None:
+        raise ValidationError("Nothing to update. Pass --title, --priority, or --due.")
+    return TaskChanges(
+        title=validate_title(title) if title is not None else None,
+        priority=parse_priority(priority) if priority is not None else None,
+        due=parse_due(due),
+    )

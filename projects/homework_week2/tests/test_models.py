@@ -6,8 +6,10 @@ from taskboard.models import (
     Column,
     Priority,
     Task,
+    TaskChanges,
     ValidationError,
     group_by_column,
+    parse_changes,
     parse_column,
     parse_due,
     parse_priority,
@@ -150,3 +152,22 @@ def test_parse_column_rejects_unknown(raw: str) -> None:
     assert str(exc.value) == (
         f"Unknown column '{raw}'. Choose from: todo, in-progress, done."
     )
+
+
+# --- edit changes (AC-9, AC-10) ---
+
+
+def test_parse_changes_validates_only_given_fields() -> None:
+    changes = parse_changes(title="  New  ", priority=None, due="2026-12-01")
+    assert changes == TaskChanges(title="New", priority=None, due=date(2026, 12, 1))
+
+
+def test_parse_changes_requires_at_least_one_field() -> None:
+    with pytest.raises(ValidationError) as exc:
+        parse_changes(title=None, priority=None, due=None)
+    assert str(exc.value) == "Nothing to update. Pass --title, --priority, or --due."
+
+
+def test_parse_changes_rejects_blank_title() -> None:
+    with pytest.raises(ValidationError, match=r"^Title cannot be empty\.$"):
+        parse_changes(title="  ", priority=None, due=None)

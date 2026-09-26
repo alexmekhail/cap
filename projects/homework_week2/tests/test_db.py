@@ -4,7 +4,13 @@ from pathlib import Path
 import pytest
 
 from taskboard import db
-from taskboard.models import Column, Priority, TaskNotFoundError
+from taskboard.models import (
+    Column,
+    Priority,
+    Task,
+    TaskChanges,
+    TaskNotFoundError,
+)
 
 
 def test_db_path_uses_env_override(db_path: Path) -> None:
@@ -58,3 +64,21 @@ def test_move_missing_task_raises(db_path: Path) -> None:
 def test_get_missing_task_raises(db_path: Path) -> None:
     with db.connect(db_path) as conn, pytest.raises(TaskNotFoundError):
         db.get_task(conn, 1)
+
+
+def test_update_task_changes_only_given_fields(db_path: Path) -> None:
+    with db.connect(db_path) as conn:
+        task = db.add_task(conn, "A", Priority.LOW, date(2026, 1, 1))
+        db.move_task(conn, task.id, Column.IN_PROGRESS)
+        updated = db.update_task(
+            conn, task.id, TaskChanges(title=None, priority=Priority.HIGH, due=None)
+        )
+    assert updated == Task(
+        task.id, "A", Priority.HIGH, date(2026, 1, 1), Column.IN_PROGRESS
+    )
+
+
+def test_update_missing_task_raises(db_path: Path) -> None:
+    changes = TaskChanges(title="X", priority=None, due=None)
+    with db.connect(db_path) as conn, pytest.raises(TaskNotFoundError):
+        db.update_task(conn, 99, changes)
