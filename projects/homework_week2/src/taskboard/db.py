@@ -111,3 +111,9 @@ def update_task(conn: sqlite3.Connection, task_id: int, changes: TaskChanges) ->
     if cursor.rowcount == 0:
         raise TaskNotFoundError(task_id)
     return get_task(conn, task_id)
+
+
+def delete_task(conn: sqlite3.Connection, task_id: int) -> None:
+    cursor = conn.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
+    if cursor.rowcount == 0:
+        raise TaskNotFoundError(task_id)

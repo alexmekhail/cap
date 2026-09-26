@@ -101,3 +101,22 @@ def edit(
         with db.connect() as conn:
             task = db.update_task(conn, task_id, changes)
     typer.echo(f"Updated task {task.id}.")
+
+
+@app.command()
+def delete(
+    task_id: Annotated[int, typer.Argument(help="Task id.")],
+    yes: Annotated[
+        bool, typer.Option("--yes", "-y", help="Skip the confirmation prompt.")
+    ] = False,
+) -> None:
+    """Delete a task (asks for confirmation unless --yes)."""
+    with _user_errors():
+        with db.connect() as conn:
+            task = db.get_task(conn, task_id)
+        if not yes and not typer.confirm(f'Delete task {task.id} "{task.title}"?'):
+            typer.echo("Cancelled.")
+            return
+        with db.connect() as conn:
+            db.delete_task(conn, task_id)
+    typer.echo(f"Deleted task {task_id}.")

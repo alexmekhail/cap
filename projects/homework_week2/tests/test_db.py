@@ -82,3 +82,24 @@ def test_update_missing_task_raises(db_path: Path) -> None:
     changes = TaskChanges(title="X", priority=None, due=None)
     with db.connect(db_path) as conn, pytest.raises(TaskNotFoundError):
         db.update_task(conn, 99, changes)
+
+
+def test_delete_task_removes_it(db_path: Path) -> None:
+    with db.connect(db_path) as conn:
+        task = db.add_task(conn, "A", Priority.LOW, None)
+        db.delete_task(conn, task.id)
+        assert db.list_tasks(conn) == []
+
+
+def test_delete_missing_task_raises(db_path: Path) -> None:
+    with db.connect(db_path) as conn, pytest.raises(TaskNotFoundError):
+        db.delete_task(conn, 99)
+
+
+def test_ids_are_not_reused_after_delete(db_path: Path) -> None:
+    with db.connect(db_path) as conn:
+        db.add_task(conn, "A", Priority.LOW, None)
+        second = db.add_task(conn, "B", Priority.LOW, None)
+        db.delete_task(conn, second.id)
+        third = db.add_task(conn, "C", Priority.LOW, None)
+    assert third.id == 3
