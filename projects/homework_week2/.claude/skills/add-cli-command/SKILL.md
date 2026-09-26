@@ -20,7 +20,15 @@ If an input can't be traced to an AC, stop and update the spec first (step 1).
    - Cover at least **one happy path** and **one error case** per AC, and name each test after its AC, for example `test_ac8_move_to_in_progress`.
    - Add unit tests in `tests/test_models.py` / `tests/test_db.py` for any new validation or query.
    - Assert the exit code, the exact message, and which stream it went to (stdout or stderr). For errors, also assert that `Traceback` is absent and that the DB is unchanged.
-   - Run `.venv/bin/pytest` and **save the failing output**. The tests must fail for the expected reason (missing command or behavior), not because of a typo or import error.
+   - If the tests import names that don't exist yet, add **stubs** first: the final
+     signatures, with bodies that `raise NotImplementedError`. A collection-time
+     `ImportError` is not acceptable failing evidence, because it hides every other test.
+   - Run `.venv/bin/pytest` and **save the failing output**. Every new test must fail for
+     the expected reason (`NotImplementedError`, `No such command`, or a wrong value).
+   - **Any new test that already passes must be explained or tightened.** For example, assert that the
+     setup step succeeded, and for usage errors assert the specific message, because
+     `No such command` also exits 2.
+   - Where the spec says the layout may vary, assert content (or check the DB), not spacing.
 3. **Implement the domain logic** in `models.py`: validation, rules, and `TaskboardError` subclasses.
 4. **Implement persistence** in `db.py` with parameterized SQL only.
 5. **Wire up the CLI** in `cli.py`: parse, call, print, and map errors. No business logic goes here.
@@ -30,7 +38,7 @@ If an input can't be traced to an AC, stop and update the spec first (step 1).
    .venv/bin/ruff check .
    .venv/bin/ruff format --check .
    ```
-   If formatting fails, run `.venv/bin/ruff format .` and rerun the check.
+   If lint or formatting fails, run `.venv/bin/ruff check --fix .` and `.venv/bin/ruff format .`, then rerun all three commands.
 7. **Run the command manually** against a scratch DB, including one error case:
    ```bash
    export TASKBOARD_DB="$(mktemp -d)/manual.db"
